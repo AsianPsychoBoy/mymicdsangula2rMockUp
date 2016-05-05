@@ -4,14 +4,17 @@ import { Title } from 'angular2/platform/browser';
 import {DomData} from './mockdata.service'
 import {NgFor} from 'angular2/common'
 
+var _navService = new DomData();
+var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
+
 @Component({
     selector: 'my-navbar',
     template: ` <div class="navbar"><div *ngFor="let page of pages; let i = index"
                 [ngClass]="{blur: blur[i], navbar_item: true, active: isActive[i]}" (click)="onSelect(i)" 
-                (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)">{{page}}</div>`,
+                (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)">{{page}}</div></div>`,
                 
     directives: [NgClass],
-    styleUrls: ['./css/navbar.css'],
+    styleUrls: [styleUrl],
     providers: [DomData]
 })
 
@@ -51,13 +54,13 @@ export class NavComponent {
     private isActive:boolean[] = [false,false,false,false,false]
     
     public constructor(private _titleService: Title, private _DomService: DomData) { }
-    public pages = this._DomService.navTitles
+    public pages = this._DomService.getNav().navTitles
   //emit events to alert the other components to render the app
     
     public onSelect(x):void {
         this.restore(x);
         this.magnify(x);
-        this._titleService.setTitle("MockUp-"+this._DomService.navTitles[x]);
+        this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
     }
 }
 

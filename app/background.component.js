@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './mockdata.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,23 +10,48 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var BgComponent;
+    var core_1, mockdata_service_1;
+    var _bgService, templateUrl, styleUrl, e, BgComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (mockdata_service_1_1) {
+                mockdata_service_1 = mockdata_service_1_1;
             }],
         execute: function() {
+            _bgService = new mockdata_service_1.DomData();
+            try {
+                templateUrl = _bgService.getBg().HTMLUrl;
+                styleUrl = _bgService.getBg().StyleUrl;
+            }
+            catch (e) {
+                console.log(e);
+            }
+            if (!templateUrl || !styleUrl) {
+                templateUrl = '../Backgrounds/BgFail/BgFail.html';
+                styleUrl = '';
+            }
             BgComponent = (function () {
-                function BgComponent() {
+                function BgComponent(_BgService) {
+                    this._BgService = _BgService;
+                    try {
+                        System.import(_BgService.getBg().LibUrl);
+                        System.import(_BgService.getBg().JSUrl);
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
                 }
                 BgComponent = __decorate([
                     core_1.Component({
                         selector: 'my-bg',
-                        template: "\n                \n    ",
+                        providers: [mockdata_service_1.DomData],
+                        templateUrl: templateUrl,
+                        styleUrls: [styleUrl]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [mockdata_service_1.DomData])
                 ], BgComponent);
                 return BgComponent;
             }());
