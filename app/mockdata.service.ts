@@ -6,7 +6,11 @@ export class DomData {
         var styleList = {
             Wriggle: {//mockdata
                 StyleUrl: '../css/navbar/Wriggle.css',
-                Selected: true,
+                Selected: false,
+            },
+            Waves: {
+                StyleUrl: '../css/navbar/Waves.css',
+                Selected:true
             }
         }
         for (let style in styleList) {

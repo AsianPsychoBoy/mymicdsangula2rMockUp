@@ -25,7 +25,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     var styleList = {
                         Wriggle: {
                             StyleUrl: '../css/navbar/Wriggle.css',
-                            Selected: true,
+                            Selected: false,
+                        },
+                        Waves: {
+                            StyleUrl: '../css/navbar/Waves.css',
+                            Selected: true
                         }
                     };
                     for (var style in styleList) {
