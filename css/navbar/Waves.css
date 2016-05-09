@@ -20,8 +20,8 @@
   .navbar .active{
       font-size: 30px;
       font-weight: 600;
-      background-color: #021c1e;
       border-radius: 30%;
+      border-style: solid none solid;
   }
   .navbar .navbar_item{
     cursor: pointer;

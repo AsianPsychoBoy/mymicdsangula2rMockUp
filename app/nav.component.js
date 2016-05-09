@@ -34,7 +34,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/platform/browser'
                     this._titleService = _titleService;
                     this._DomService = _DomService;
                     this.blur = [false, false, false, false, false];
-                    this.isActive = [false, false, false, false, false];
+                    this.isActive = [true, false, false, false, false];
                     this.pages = this._DomService.getNav().navTitles;
                 }
                 NavComponent.prototype.restore = function (x) {

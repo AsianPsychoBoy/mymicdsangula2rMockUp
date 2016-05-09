@@ -51,7 +51,7 @@ export class NavComponent {
         this.removeBlur(x);
     }
     private blur:boolean[] = [false,false,false,false,false]
-    private isActive:boolean[] = [false,false,false,false,false]
+    private isActive:boolean[] = [true,false,false,false,false]
     
     public constructor(private _titleService: Title, private _DomService: DomData) { }
     public pages = this._DomService.getNav().navTitles
