@@ -1,3 +1,68 @@
 body{
     background-color: #eee
 } 
+.startup {
+	background-color: #29ABE2;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.startup {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#startup-animation {
+	width: 25%;
+    margin: 9% auto 0;
+}
+
+#startup-animation path {
+	stroke: black;
+	stroke-width: 2;
+	stroke-dasharray: 3348.4091796875;
+	stroke-dashoffset: 3348.4091796875;
+	fill-opacity: 0;
+}
+
+.house-shadow {
+	fill: #006837;
+}
+
+.house {
+	fill: #009245;
+}
+
+svg.toggled path {
+	animation-name: house;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes house {
+	50% {
+		stroke-dashoffset: 0;
+		fill-opacity: 0;
+	}
+	100% {
+		fill-opacity: 1;
+	}
+}
+
+h1 {
+    color: #eee;
+    margin:auto 0 10%;
+}
+/*
+  SVG loader
+*/
+.loader{
+    margin:auto 0 9%;
+}
+
+.loader svg path,
+.loader svg rect {
+  fill: #eee;
+}
