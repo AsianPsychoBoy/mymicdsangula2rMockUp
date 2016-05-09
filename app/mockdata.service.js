@@ -74,6 +74,13 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     });
                     return selectedBg;
                 };
+                DomData.prototype.getContent = function (page) {
+                    if (page == "Home") {
+                        return {
+                            templateUrl: '../templates/home.html'
+                        };
+                    }
+                };
                 DomData = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])

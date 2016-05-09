@@ -1,4 +1,4 @@
-System.register(['angular2/core', './nav.component', './background.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './nav.component', './background.component', './content.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './nav.component', './background.component'], 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, nav_component_1, background_component_1;
+    var core_1, nav_component_1, background_component_1, content_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', './nav.component', './background.component'], 
             },
             function (background_component_1_1) {
                 background_component_1 = background_component_1_1;
+            },
+            function (content_component_1_1) {
+                content_component_1 = content_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -30,8 +33,8 @@ System.register(['angular2/core', './nav.component', './background.component'], 
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'mymicds-app',
-                        template: " <div class=\"app-container\">\n                    <my-bg></my-bg>\n                    <my-navbar class=\"navbar\">\n                    </my-navbar>\n                    <div id=\"main_panel\"></div>\n                </div>",
-                        directives: [nav_component_1.NavComponent, background_component_1.BgComponent],
+                        template: " <div class=\"app-container\">\n                    <my-bg></my-bg>\n                    <my-navbar class=\"navbar\">\n                    </my-navbar>\n                    <app-content></app-content>\n                </div>",
+                        directives: [nav_component_1.NavComponent, background_component_1.BgComponent, content_component_1.ContentComponent],
                         styleUrls: ['./css/main.css']
                     }), 
                     __metadata('design:paramtypes', [])

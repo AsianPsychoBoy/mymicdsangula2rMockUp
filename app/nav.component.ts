@@ -57,10 +57,12 @@ export class NavComponent {
     public pages = this._DomService.getNav().navTitles
   //emit events to alert the other components to render the app
     
+    public selectedPage = 'Home'
     public onSelect(x):void {
         this.restore(x);
         this.magnify(x);
         this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
+        this.selectedPage = this._DomService.getNav().navTitles[x];
     }
 }
 

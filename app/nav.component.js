@@ -36,6 +36,8 @@ System.register(['angular2/core', 'angular2/common', 'angular2/platform/browser'
                     this.blur = [false, false, false, false, false];
                     this.isActive = [true, false, false, false, false];
                     this.pages = this._DomService.getNav().navTitles;
+                    //emit events to alert the other components to render the app
+                    this.selectedPage = 'Home';
                 }
                 NavComponent.prototype.restore = function (x) {
                     for (var i = 0; i < this.isActive.length; i++) {
@@ -64,11 +66,11 @@ System.register(['angular2/core', 'angular2/common', 'angular2/platform/browser'
                 NavComponent.prototype.mouseLeave = function (x) {
                     this.removeBlur(x);
                 };
-                //emit events to alert the other components to render the app
                 NavComponent.prototype.onSelect = function (x) {
                     this.restore(x);
                     this.magnify(x);
                     this._titleService.setTitle("MockUp-" + this._DomService.getNav().navTitles[x]);
+                    this.selectedPage = this._DomService.getNav().navTitles[x];
                 };
                 NavComponent = __decorate([
                     core_1.Component({
