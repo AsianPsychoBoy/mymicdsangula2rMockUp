@@ -27,8 +27,27 @@ export class DomData {
         //use http to get planner info 
     }
     public getweather() {}
-    public getProgress() {}
-    public getClasses() {}
+    public getProgress() {
+        return {
+            A: "Math",
+            A_percentage: "100",
+            B: "English",
+            B_percentage: "100",
+            C: "Science",
+            C_percentage: "100",
+            D: "History",
+            D_percentage: "100",
+            E: "World Language",
+            E_percentage: "70",
+            F: "Choir",
+            F_percentage: "0",
+            G: "Free",
+            G_percentage: "0"
+        }
+    }    
+    public getClasses() {
+        
+    }
     //Background services
     public getBg() {
         var bgList = {//Mock Data
@@ -58,8 +77,11 @@ export class DomData {
     public getContent(page: string) {
         if (page=="Home") {
             return {
-                templateUrl: '../templates/home.html'
+                templateUrl: '../templates/content/content.html'
             }
+        }
+        if (page=="Planner") {
+            return
         }
     }
 }

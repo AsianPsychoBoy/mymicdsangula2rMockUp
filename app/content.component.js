@@ -1,4 +1,4 @@
-System.register(['angular2/core', './mockdata.service', 'angular2/platform/browser', './nav.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './mockdata.service', 'angular2/platform/browser', './nav.component', './progress.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './mockdata.service', 'angular2/platform/brows
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, mockdata_service_1, browser_1, nav_component_1;
+    var core_1, mockdata_service_1, browser_1, nav_component_1, progress_component_1;
     var _titleService, _dataService, NavData, templateUrl, ContentComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', './mockdata.service', 'angular2/platform/brows
             },
             function (nav_component_1_1) {
                 nav_component_1 = nav_component_1_1;
+            },
+            function (progress_component_1_1) {
+                progress_component_1 = progress_component_1_1;
             }],
         execute: function() {
             _titleService = new browser_1.Title;
@@ -38,7 +41,9 @@ System.register(['angular2/core', './mockdata.service', 'angular2/platform/brows
                 ContentComponent = __decorate([
                     core_1.Component({
                         selector: 'app-content',
-                        templateUrl: templateUrl
+                        templateUrl: templateUrl,
+                        styleUrls: ['../css/content/content.css'],
+                        directives: [progress_component_1.MyProgress]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ContentComponent);

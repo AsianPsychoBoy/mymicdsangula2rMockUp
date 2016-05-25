@@ -1,0 +1,9 @@
+.flex-container {
+    display: flex;
+    margin: 5% auto auto;
+    padding:auto;
+}
+
+.flex-item {
+    margin:auto;
+}

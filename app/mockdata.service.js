@@ -46,8 +46,26 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     //use http to get planner info 
                 };
                 DomData.prototype.getweather = function () { };
-                DomData.prototype.getProgress = function () { };
-                DomData.prototype.getClasses = function () { };
+                DomData.prototype.getProgress = function () {
+                    return {
+                        A: "Math",
+                        A_percentage: "100",
+                        B: "English",
+                        B_percentage: "100",
+                        C: "Science",
+                        C_percentage: "100",
+                        D: "History",
+                        D_percentage: "100",
+                        E: "World Language",
+                        E_percentage: "70",
+                        F: "Choir",
+                        F_percentage: "0",
+                        G: "Free",
+                        G_percentage: "0"
+                    };
+                };
+                DomData.prototype.getClasses = function () {
+                };
                 //Background services
                 DomData.prototype.getBg = function () {
                     var bgList = {
@@ -77,8 +95,11 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 DomData.prototype.getContent = function (page) {
                     if (page == "Home") {
                         return {
-                            templateUrl: '../templates/home.html'
+                            templateUrl: '../templates/content/content.html'
                         };
+                    }
+                    if (page == "Planner") {
+                        return;
                     }
                 };
                 DomData = __decorate([

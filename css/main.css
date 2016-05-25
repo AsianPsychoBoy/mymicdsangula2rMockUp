@@ -66,3 +66,7 @@ h1 {
 .loader svg rect {
   fill: #eee;
 }
+
+my-navbar {
+	z-index: 0
+}

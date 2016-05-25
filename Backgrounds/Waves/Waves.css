@@ -1,5 +1,6 @@
-body
+#waves-container
 {
+  width: 100%;
   background:#002040;
 }
 
@@ -18,7 +19,7 @@ body
 {
 	width:calc( 100% + 4em );
 	height:100%;
-	position:absolute;
+	position: absolute;
 	left:-2em;
 	background:bottom center repeat-x;
 	animation-iteration-count:infinite;
