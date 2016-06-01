@@ -30,19 +30,20 @@ export class DomData {
     public getProgress() {
         return {
             A: "Math",
-            A_percentage: "100",
+            A_percentage: 100,
             B: "English",
-            B_percentage: "100",
+            B_percentage: 100,
             C: "Science",
-            C_percentage: "100",
+            C_percentage: 100,
             D: "History",
-            D_percentage: "100",
+            D_percentage: 100,
             E: "World Language",
-            E_percentage: "70",
+            E_percentage: 70,
             F: "Choir",
-            F_percentage: "0",
+            F_percentage: 0,
             G: "Free",
-            G_percentage: "0"
+            G_percentage: 0,
+            overall_percentage:75
         }
     }    
     public getClasses() {

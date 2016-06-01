@@ -1,13 +1,18 @@
 body{
-    background-color: #eee
+    background-color: #eee+
 } 
 .startup {
-	background-color: #29ABE2;
+	background-color: #29ABE2; /*e-hentai.org* is my motivation nhentai.net*/
 	height: 100%;
 	margin: 0;
 	padding: 0;
 }
-
+.house {
+	height: 70vh;
+}
+.loading {
+	height: 30vh;
+}
 .startup {
 	display: flex;
 	justify-content: center;
