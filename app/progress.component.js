@@ -11,7 +11,7 @@ System.register(['angular2/core', './mockdata.service'], function(exports_1, con
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, mockdata_service_1;
-    var _DomService, p, MyProgress;
+    var MyProgress;
     return {
         setters:[
             function (core_1_1) {
@@ -21,17 +21,10 @@ System.register(['angular2/core', './mockdata.service'], function(exports_1, con
                 mockdata_service_1 = mockdata_service_1_1;
             }],
         execute: function() {
-            _DomService = new mockdata_service_1.DomData, p = 0;
-            setInterval(function () {
-                console.log(_DomService.getProgress().overall_percentage);
-                p = _DomService.getProgress().overall_percentage / 100 * (780 - 20) + 20;
-            }, 1000);
-            console.log(p);
             MyProgress = (function () {
                 function MyProgress(_DomService) {
                     this._DomService = _DomService;
-                    this.percentage = p;
-                    console.log(this.percentage);
+                    this.percentage = _DomService.getProgress().overall_percentage;
                 }
                 ;
                 MyProgress = __decorate([
