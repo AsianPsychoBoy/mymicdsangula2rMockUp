@@ -75,11 +75,19 @@ System.register(['angular2/core', 'angular2/common', 'angular2/platform/browser'
                 NavComponent = __decorate([
                     core_1.Component({
                         selector: 'my-navbar',
-                        template: " <div class=\"navbar\"><div *ngFor=\"let page of pages; let i = index\"\n                [ngClass]=\"{blur: blur[i], navbar_item: true, active: isActive[i]}\" (click)=\"onSelect(i)\" \n                (mouseenter)=\"mouseEnter(i)\" (mouseleave)=\"mouseLeave(i)\">{{page}}</div></div>",
+                        template: " <div class=\"navbar\"><div *ngFor=\"let page of pages; let i = index\"\n                [ngClass]=\"{blur: blur[i], navbar_item: true, active: isActive[i]}\" (click)=\"onSelect(i)\" \n                (mouseenter)=\"mouseEnter(i)\" (mouseleave)=\"mouseLeave(i)\"><a [routerLink]=\"['{{page}}']\">{{page}}</a></div></div>\n                <router-outlet></router-outlet>\n                ",
                         directives: [common_1.NgClass],
                         styleUrls: [styleUrl],
                         providers: [mockdata_service_1.DomData]
-                    }), 
+                    }),
+                    RouteConfig([
+                        { path: '/',
+                            name: 'Home',
+                            component: mainContent },
+                        { path: '/lunch',
+                            name: 'Lunch',
+                            component: lunchContent }
+                    ]), 
                     __metadata('design:paramtypes', [browser_1.Title, mockdata_service_1.DomData])
                 ], NavComponent);
                 return NavComponent;

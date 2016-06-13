@@ -25,9 +25,12 @@
         }
         }
     });
-    setTimeout(function() {System.import('app/main').then(null, console.error.bind(console))}, 3000);
+    setTimeout(function() {System.import('app/main').then(null, console.error.bind(console))}, 2000);
     </script>
 </head>
+<script> 
+    document.write('<base href="'+document.location+'"/>');
+</script>
 <body>
     <mymicds-app> 
         <div class="startup house">

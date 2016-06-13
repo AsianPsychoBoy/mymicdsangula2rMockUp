@@ -11,13 +11,22 @@ var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
     selector: 'my-navbar',
     template: ` <div class="navbar"><div *ngFor="let page of pages; let i = index"
                 [ngClass]="{blur: blur[i], navbar_item: true, active: isActive[i]}" (click)="onSelect(i)" 
-                (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)">{{page}}</div></div>`,
+                (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)"><a [routerLink]="['{{page}}']">{{page}}</a></div></div>
+                <router-outlet></router-outlet>
+                `,
                 
     directives: [NgClass],
     styleUrls: [styleUrl],
     providers: [DomData]
 })
-
+@RouteConfig([
+    {path: '/',
+    name: 'Home',
+    component: mainContent},
+    {path: '/lunch',
+    name: 'Lunch',
+    component: lunchContent}
+    ])
 export class NavComponent { 
     private restore(x):void {
         for (var i=0;i<this.isActive.length;i++) {

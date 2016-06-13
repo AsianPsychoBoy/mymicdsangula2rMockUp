@@ -75,14 +75,5 @@ export class DomData {
             })   
             return selectedBg
             }
-    public getContent(page: string) {
-        if (page=="Home") {
-            return {
-                templateUrl: '../templates/content/content.html'
-            }
-        }
-        if (page=="Planner") {
-            return
-        }
     }
 }

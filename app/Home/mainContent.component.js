@@ -1,4 +1,4 @@
-System.register(['angular2/core', './mockdata.service', 'angular2/platform/browser', './nav.component', './progress.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './progress.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,47 +10,34 @@ System.register(['angular2/core', './mockdata.service', 'angular2/platform/brows
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, mockdata_service_1, browser_1, nav_component_1, progress_component_1;
-    var _titleService, _dataService, NavData, templateUrl, ContentComponent;
+    var core_1, progress_component_1;
+    var mainContent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (mockdata_service_1_1) {
-                mockdata_service_1 = mockdata_service_1_1;
-            },
-            function (browser_1_1) {
-                browser_1 = browser_1_1;
-            },
-            function (nav_component_1_1) {
-                nav_component_1 = nav_component_1_1;
-            },
             function (progress_component_1_1) {
                 progress_component_1 = progress_component_1_1;
             }],
         execute: function() {
-            _titleService = new browser_1.Title;
-            _dataService = new mockdata_service_1.DomData;
             //do logic to determine which page is selected, and get the correcponding content
-            NavData = new nav_component_1.NavComponent(_titleService, _dataService);
-            templateUrl = _dataService.getContent(NavData.selectedPage).templateUrl;
-            ContentComponent = (function () {
-                function ContentComponent() {
+            mainContent = (function () {
+                function mainContent() {
                 }
-                ContentComponent = __decorate([
+                mainContent = __decorate([
                     core_1.Component({
                         selector: 'app-content',
-                        templateUrl: templateUrl,
+                        templateUrl: '../templates/content/mainContent.html',
                         styleUrls: ['../css/content/content.css'],
                         directives: [progress_component_1.MyProgress]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ContentComponent);
-                return ContentComponent;
+                ], mainContent);
+                return mainContent;
             }());
-            exports_1("ContentComponent", ContentComponent);
+            exports_1("mainContent", mainContent);
         }
     }
 });
-//# sourceMappingURL=content.component.js.map
+//# sourceMappingURL=mainContent.component.js.map
