@@ -1,8 +1,8 @@
-import {Component} from 'angular2/core';
-import {NgClass} from 'angular2/common';
-import { Title } from 'angular2/platform/browser';
-import {DomData} from './mockdata.service'
-import {NgFor} from 'angular2/common'
+import {Component} from '@angular/core';
+import {NgClass} from '@angular/common';
+import { Title } from '@angular/platform-browser';
+import {DomData} from './mockdata.service'//Do not put two copies of the same service
+import {NgFor} from '@angular/common'
 
 var _navService = new DomData();
 var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
@@ -12,21 +12,13 @@ var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
     template: ` <div class="navbar"><div *ngFor="let page of pages; let i = index"
                 [ngClass]="{blur: blur[i], navbar_item: true, active: isActive[i]}" (click)="onSelect(i)" 
                 (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)"><a [routerLink]="['{{page}}']">{{page}}</a></div></div>
-                <router-outlet></router-outlet>
                 `,
                 
     directives: [NgClass],
     styleUrls: [styleUrl],
     providers: [DomData]
 })
-@RouteConfig([
-    {path: '/',
-    name: 'Home',
-    component: mainContent},
-    {path: '/lunch',
-    name: 'Lunch',
-    component: lunchContent}
-    ])
+
 export class NavComponent { 
     private restore(x):void {
         for (var i=0;i<this.isActive.length;i++) {

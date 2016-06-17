@@ -1,8 +1,9 @@
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router-depricated';
-import {Component} from 'angular2/core';
+import {ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
+import {Component} from '@angular/core';
 import {NavComponent} from './nav.component';
 import {BgComponent} from './background.component'
 import {mainContent} from './Home/mainContent.component'
+import {DomData} from './mockdata.service';
 
 @Component({
     selector: 'mymicds-app',
@@ -10,8 +11,10 @@ import {mainContent} from './Home/mainContent.component'
                     <my-bg></my-bg>
                     <my-navbar class="navbar">
                     </my-navbar>
+                    <router-outlet></router-outlet>
                 </div>`,
     directives: [NavComponent, BgComponent],
+    providers: [DomData, ROUTER_PROVIDERS],
     styleUrls: ['./css/main.css']
 })
 

@@ -1,7 +1,6 @@
-import {Component} from 'angular2/core';
-import {DomData} from './mockdata.service';
-import {MyProgress} from './progress.component'
-//do logic to determine which page is selected, and get the correcponding content
+import {Component} from '@angular/core';
+import {DomData} from '../mockdata.service';
+import {MyProgress} from '../progress.component'
 
 
 @Component ({
