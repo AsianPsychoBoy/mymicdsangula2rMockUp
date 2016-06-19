@@ -1,5 +1,7 @@
 'use strict';
 
+var port = process.env.PORT || 420;
+
 var express = require('express');
 var app = express();
 
@@ -7,6 +9,6 @@ app.use(express.static('./'));
 
 //app.get('./')
 
-app.listen(process.env.PORT, function () {
-  console.log('app listening on port unknown!');
+app.listen(port, function () {
+  console.log('app listening on port ' + port + '!');
 });
