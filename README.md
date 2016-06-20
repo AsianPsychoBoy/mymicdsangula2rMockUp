@@ -1,2 +1,3 @@
 # mymicdsangula2rMockUp
-ur a poopyface
+
+To run the front-end, type `node server.js`
