@@ -1,10 +1,10 @@
 import {Component} from '@angular/core'
-import {DomData} from './mockdata.service'
+import {DomData} from '../mockdata.service'
 
     @Component ({
         selector: 'my-progress',
-        templateUrl: '../templates/content/progress.html',
-        styleUrls: ['../css/content/progress.css'],
+        templateUrl: '../templates/mainContent/progress.html',
+        styleUrls: ['../css/mainContent/progress.css'],
         providers: [DomData]
     })
 

@@ -21,6 +21,7 @@
     'compiler',
     'core',
     'http',
+    'router',
     'platform-browser',
     'platform-browser-dynamic',
     'router-deprecated',
@@ -36,10 +37,11 @@
   }
   // Most environments should use UMD; some (Karma) need the individual index files
   var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
-    // No umd for router yet
-  packages['@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
+
   // Add package entries for angular packages
   ngPackageNames.forEach(setPackageConfig);
+    // No umd for router yet
+  packages['@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
   var config = {
     map: map,
     packages: packages

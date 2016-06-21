@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mockdata_service_1 = require('./mockdata.service');
+var mockdata_service_1 = require('../mockdata.service');
 var MyProgress = (function () {
     function MyProgress(_DomService) {
         this._DomService = _DomService;
@@ -19,8 +19,8 @@ var MyProgress = (function () {
     MyProgress = __decorate([
         core_1.Component({
             selector: 'my-progress',
-            templateUrl: '../templates/content/progress.html',
-            styleUrls: ['../css/content/progress.css'],
+            templateUrl: '../templates/mainContent/progress.html',
+            styleUrls: ['../css/mainContent/progress.css'],
             providers: [mockdata_service_1.DomData]
         }), 
         __metadata('design:paramtypes', [mockdata_service_1.DomData])

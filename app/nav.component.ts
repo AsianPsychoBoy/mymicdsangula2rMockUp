@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {NgClass} from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import {DomData} from './mockdata.service'//Do not put two copies of the same service
-import {NgFor} from '@angular/common'
+import {DomData} from './mockdata.service';//Do not put two copies of the same service
+import {NgFor} from '@angular/common';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 var _navService = new DomData();
 var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
@@ -11,10 +12,10 @@ var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
     selector: 'my-navbar',
     template: ` <div class="navbar"><div *ngFor="let page of pages; let i = index"
                 [ngClass]="{blur: blur[i], navbar_item: true, active: isActive[i]}" (click)="onSelect(i)" 
-                (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)"><a [routerLink]="['{{page}}']">{{page}}</a></div></div>
+                (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)"><a [routerLink]="['/'+page]">{{page}}</a></div></div>
                 `,
                 
-    directives: [NgClass],
+    directives: [NgClass, ROUTER_DIRECTIVES],
     styleUrls: [styleUrl],
     providers: [DomData]
 })

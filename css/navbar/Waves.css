@@ -1,14 +1,17 @@
+a, a:hover, a:active, a:focus{
+  text-decoration: none;
+}
     .navbar {
     align: center;
-    margin: 0px auto 20px;
-    padding: auto auto 0px;
+    margin: 0 auto 22vh; /*this adds up to 25vh, which is the configured height of the waves*/
+    padding: 3vh auto 0px;
     display: flex;
     align-items: center; 
     }
   .navbar .navbar_item {
     justify-content: space-around;
     margin: auto;
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: #eee;
     font-size: 20px;
     font-weight: 600; 

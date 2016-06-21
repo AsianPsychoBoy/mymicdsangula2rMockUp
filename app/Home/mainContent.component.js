@@ -9,15 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var progress_component_1 = require('../progress.component');
+var progress_component_1 = require('./progress.component');
 var mainContent = (function () {
     function mainContent() {
     }
     mainContent = __decorate([
         core_1.Component({
             selector: 'app-content',
-            templateUrl: '../templates/content/mainContent.html',
-            styleUrls: ['../css/content/content.css'],
+            templateUrl: '../templates/mainContent/mainContent.html',
+            styleUrls: ['../css/mainContent/mainContent.css'],
             directives: [progress_component_1.MyProgress]
         }), 
         __metadata('design:paramtypes', [])

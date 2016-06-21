@@ -10,21 +10,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var router_1 = require('@angular/router');
 var core_1 = require('@angular/core');
-var nav_component_1 = require('./nav.component');
+//import {NavComponent} from './nav.component';
 var background_component_1 = require('./background.component');
 var mockdata_service_1 = require('./mockdata.service');
+var common_1 = require('@angular/common');
+var platform_browser_1 = require('@angular/platform-browser');
+var _navService = new mockdata_service_1.DomData();
+var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(_titleService, _DomService) {
+        this._titleService = _titleService;
+        this._DomService = _DomService;
+        this.blur = [false, false, false, false, false];
+        this.isActive = [true, false, false, false, false];
+        this.pages = this._DomService.getNav().navTitles;
+        //emit events to alert the other components to render the app
+        this.selectedPage = 'Home';
     }
+    AppComponent.prototype.restore = function (x) {
+        for (var i = 0; i < this.isActive.length; i++) {
+            this.isActive[i] = false;
+        }
+    };
+    AppComponent.prototype.magnify = function (x) {
+        this.restore(x);
+        this.isActive[x] = true;
+    };
+    AppComponent.prototype.applyBlur = function (x) {
+        for (var i = 0; i < this.blur.length; i++) {
+            if (i != x) {
+                this.blur[i] = true;
+            }
+        }
+    };
+    AppComponent.prototype.removeBlur = function (x) {
+        for (var i = 0; i < this.blur.length; i++) {
+            this.blur[i] = false;
+        }
+    };
+    AppComponent.prototype.mouseEnter = function (x) {
+        this.applyBlur(x);
+    };
+    AppComponent.prototype.mouseLeave = function (x) {
+        this.removeBlur(x);
+    };
+    AppComponent.prototype.onSelect = function (x) {
+        this.restore(x);
+        this.magnify(x);
+        this._titleService.setTitle("MockUp-" + this._DomService.getNav().navTitles[x]);
+        this.selectedPage = this._DomService.getNav().navTitles[x];
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'mymicds-app',
-            template: " <div class=\"app-container\">\n                    <my-bg></my-bg>\n                    <my-navbar class=\"navbar\">\n                    </my-navbar>\n                    <router-outlet></router-outlet>\n                </div>",
-            directives: [nav_component_1.NavComponent, background_component_1.BgComponent],
-            providers: [mockdata_service_1.DomData, router_1.ROUTER_PROVIDERS],
-            styleUrls: ['./css/main.css']
+            template: " <div class=\"app-container\">\n                    <my-bg></my-bg>\n                    <div class=\"navbar\"><a *ngFor=\"let page of pages; let i = index\"\n                 [ngClass]=\"{blur: blur[i], navbar_item: true, active: isActive[i]}\" (click)=\"onSelect(i)\" \n                (mouseenter)=\"mouseEnter(i)\" (mouseleave)=\"mouseLeave(i)\" [routerLink]=\"['/'+page]\">{{page}}</a></div>\n                    <router-outlet></router-outlet>\n                </div>",
+            directives: [background_component_1.BgComponent, common_1.NgClass, router_1.ROUTER_DIRECTIVES],
+            providers: [mockdata_service_1.DomData],
+            styleUrls: ['./css/bootstrap.min.css', './css/main.css', styleUrl]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [platform_browser_1.Title, mockdata_service_1.DomData])
     ], AppComponent);
     return AppComponent;
 }());

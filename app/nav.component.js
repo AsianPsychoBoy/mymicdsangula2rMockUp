@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var platform_browser_1 = require('@angular/platform-browser');
 var mockdata_service_1 = require('./mockdata.service'); //Do not put two copies of the same service
+var router_1 = require('@angular/router');
 var _navService = new mockdata_service_1.DomData();
 var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
 var NavComponent = (function () {
@@ -60,8 +61,8 @@ var NavComponent = (function () {
     NavComponent = __decorate([
         core_1.Component({
             selector: 'my-navbar',
-            template: " <div class=\"navbar\"><div *ngFor=\"let page of pages; let i = index\"\n                [ngClass]=\"{blur: blur[i], navbar_item: true, active: isActive[i]}\" (click)=\"onSelect(i)\" \n                (mouseenter)=\"mouseEnter(i)\" (mouseleave)=\"mouseLeave(i)\"><a [routerLink]=\"['{{page}}']\">{{page}}</a></div></div>\n                ",
-            directives: [common_1.NgClass],
+            template: " <div class=\"navbar\"><div *ngFor=\"let page of pages; let i = index\"\n                [ngClass]=\"{blur: blur[i], navbar_item: true, active: isActive[i]}\" (click)=\"onSelect(i)\" \n                (mouseenter)=\"mouseEnter(i)\" (mouseleave)=\"mouseLeave(i)\"><a [routerLink]=\"['/'+page]\">{{page}}</a></div></div>\n                ",
+            directives: [common_1.NgClass, router_1.ROUTER_DIRECTIVES],
             styleUrls: [styleUrl],
             providers: [mockdata_service_1.DomData]
         }), 

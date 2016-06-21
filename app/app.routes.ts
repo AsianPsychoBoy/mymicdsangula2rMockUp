@@ -1,11 +1,12 @@
-import { RouterConfig } from '@angular/router/config';
-import {provideRouter} from '@angular/router/router_providers'
+import { RouterConfig } from '@angular/router';
+import {provideRouter} from '@angular/router'
 import {mainContent} from './Home/mainContent.component';
 
 export const routes: RouterConfig = [
-  { path: '/', component: mainContent },
-  //{ path: '/lunch', component: lunchContent },
-  //{ path: '/planner', component: plannerContent }
+  { path: '', component: mainContent },
+  { path: 'Home', component: mainContent },
+  //{ path: 'Lunch', component: lunchContent },
+  //{ path: 'Planner', component: plannerContent }
 ];
 
 export const APP_ROUTER_PROVIDERS = [
