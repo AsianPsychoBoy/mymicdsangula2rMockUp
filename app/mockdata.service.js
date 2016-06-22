@@ -38,7 +38,7 @@ var DomData = (function () {
     };
     DomData.prototype.getweather = function () { };
     DomData.prototype.getProgress = function () {
-        return {
+        var classData = {
             A: "Math",
             A_percentage: 100,
             B: "English",
@@ -53,8 +53,11 @@ var DomData = (function () {
             F_percentage: 0,
             G: "Free",
             G_percentage: 0,
-            overall_percentage: 75
+            overall_percentage: 75,
+            current_class: "E",
+            current_percentage: 70
         };
+        return classData;
     };
     DomData.prototype.getClasses = function () {
     };

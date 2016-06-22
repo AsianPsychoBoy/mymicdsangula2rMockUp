@@ -33,12 +33,17 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
 
     export class MyProgress {
         public percentage: number;
+        public current_class: string;
+        public current_percentage: number;
         public constructor(private _DomService: DomData) {
             this.percentage = _DomService.getProgress().overall_percentage;
-            console.log(describeArc(400, 400, 340, 0, 360/100*this.percentage));
+            this.current_class = _DomService.getProgress().current_class;
+            this.current_percentage = _DomService.getProgress().current_percentage;
         };
+        public polarToCartesian=polarToCartesian;
         public describeArc=describeArc;
         public click: boolean=false;
+        //TODO: use [attr] to set stroke-width
         public thinner() {
             this.click ? document.getElementById("outer").setAttribute("stroke-width", "25px") : document.getElementById("outer").setAttribute("stroke-width", "50px");
             this.click ? document.getElementById("inner").setAttribute("stroke-width", "15px") : document.getElementById("inner").setAttribute("stroke-width", "30px");

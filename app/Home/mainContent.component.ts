@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {DomData} from '../mockdata.service';
 import {MyProgress} from './progress.component'
 
 
