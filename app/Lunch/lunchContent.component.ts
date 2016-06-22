@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {DomData} from '../mockdata.service';
+//import {DomData} from '../mockdata.service';
 
 
 @Component ({
