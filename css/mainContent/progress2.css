@@ -1,14 +1,23 @@
+#my-progressbar {
+    width: 50vh;
+    height: 50vh;
+}
+
 #my-progressbar-msg {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2rem;
     font-weight: 600;
-    color: #002040
 }
 
 #my-progressbar-svg {
     margin: auto;
     transform-origin: 50% 50%;
     animation: 0.5s ease 0s 1 normal backwards running startup;
+    transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+#inner, #outer {
+    transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95)
 }
 
 @keyframes startup {
@@ -17,3 +26,12 @@
     100% {transform: scale(1)}
 }
 
+@keyframes fade-in {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes fade-out {
+    from {opacity: 1}
+    to {opacity:0}
+}

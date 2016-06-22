@@ -17,7 +17,7 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
 
     var arcSweep = endAngle - startAngle <= 180 ? "0" : "1";
 
-    var d = [
+    var d:string = [
         "M", start.x, start.y, 
         "A", radius, radius, 0, arcSweep, 0, end.x, end.y
     ].join(" ");
@@ -38,4 +38,9 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
             console.log(describeArc(400, 400, 340, 0, 360/100*this.percentage));
         };
         public describeArc=describeArc;
+        public click: boolean=false;
+        public thinner() {
+            this.click ? document.getElementById("outer").setAttribute("stroke-width", "25px") : document.getElementById("outer").setAttribute("stroke-width", "50px");
+            this.click ? document.getElementById("inner").setAttribute("stroke-width", "15px") : document.getElementById("inner").setAttribute("stroke-width", "30px");
+        }
     }

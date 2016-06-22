@@ -31,10 +31,15 @@ var MyProgress = (function () {
     function MyProgress(_DomService) {
         this._DomService = _DomService;
         this.describeArc = describeArc;
+        this.click = false;
         this.percentage = _DomService.getProgress().overall_percentage;
         console.log(describeArc(400, 400, 340, 0, 360 / 100 * this.percentage));
     }
     ;
+    MyProgress.prototype.thinner = function () {
+        this.click ? document.getElementById("outer").setAttribute("stroke-width", "25px") : document.getElementById("outer").setAttribute("stroke-width", "50px");
+        this.click ? document.getElementById("inner").setAttribute("stroke-width", "15px") : document.getElementById("inner").setAttribute("stroke-width", "30px");
+    };
     MyProgress = __decorate([
         core_1.Component({
             selector: 'my-progress',
