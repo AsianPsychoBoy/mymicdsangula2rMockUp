@@ -1,0 +1,19 @@
+#my-progressbar-msg {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #002040
+}
+
+#my-progressbar-svg {
+    margin: auto;
+    transform-origin: 50% 50%;
+    animation: 0.5s ease 0s 1 normal backwards running startup;
+}
+
+@keyframes startup {
+    0% {transform: scale(0)}
+    80% {transform: scale(1.3)}
+    100% {transform: scale(1)}
+}
+

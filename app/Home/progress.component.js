@@ -10,17 +10,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var mockdata_service_1 = require('../mockdata.service');
+function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+    var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+    return {
+        x: centerX + (radius * Math.cos(angleInRadians)),
+        y: centerY + (radius * Math.sin(angleInRadians))
+    };
+}
+function describeArc(x, y, radius, startAngle, endAngle) {
+    var start = polarToCartesian(x, y, radius, endAngle);
+    var end = polarToCartesian(x, y, radius, startAngle);
+    var arcSweep = endAngle - startAngle <= 180 ? "0" : "1";
+    var d = [
+        "M", start.x, start.y,
+        "A", radius, radius, 0, arcSweep, 0, end.x, end.y
+    ].join(" ");
+    return d;
+}
 var MyProgress = (function () {
     function MyProgress(_DomService) {
         this._DomService = _DomService;
+        this.describeArc = describeArc;
         this.percentage = _DomService.getProgress().overall_percentage;
+        console.log(describeArc(400, 400, 340, 0, 360 / 100 * this.percentage));
     }
     ;
     MyProgress = __decorate([
         core_1.Component({
             selector: 'my-progress',
-            templateUrl: '../templates/mainContent/progress.html',
-            styleUrls: ['../css/mainContent/progress.css'],
+            templateUrl: '../templates/mainContent/progress2.html',
+            styleUrls: ['../css/mainContent/progress2.css'],
             providers: [mockdata_service_1.DomData]
         }), 
         __metadata('design:paramtypes', [mockdata_service_1.DomData])

@@ -1,7 +1,8 @@
 .flex-container {
     display: flex;
-    margin: 5% auto auto;
+    margin: 0 auto auto;
     padding:auto;
+    justify-content: center;
 }
 
 .flex-item {
