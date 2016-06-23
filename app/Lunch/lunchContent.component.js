@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var mockdata_service_1 = require('../mockdata.service');
+var platform_browser_1 = require('@angular/platform-browser');
 var d = new Date();
 var date = {
     year: d.getFullYear(),
@@ -17,8 +18,9 @@ var date = {
     day: d.getDate()
 };
 var lunchContent = (function () {
-    function lunchContent(dataService) {
+    function lunchContent(dataService, DomSanitizationService) {
         this.dataService = dataService;
+        this.DomSanitizationService = DomSanitizationService;
         this.date = {
             year: d.getFullYear(),
             month: d.getMonth(),
@@ -30,6 +32,7 @@ var lunchContent = (function () {
         this.lunchSpecial = lunchObj.lunchSpecial;
         this.lunchState = lunchObj.lunchState;
         this.lunch = lunchObj.lunch;
+        DomSanitizationService.bypassSecurityTrustStyle("transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95)");
     }
     ;
     lunchContent.prototype.onClickBubble = function (x) {
@@ -37,22 +40,21 @@ var lunchContent = (function () {
             this.bubbleClick[i] = false;
         }
         ;
-        this.bubbleClick[x] = !this.bubbleClick[x];
+        this.bubbleClick[x] = !(this.bubbleClick[x]);
         for (var i = 0; i <= 4; i++) {
             this.moveDirection[i] = 0;
         }
         ;
         this.moveDirection[x] = -1;
-        console.log(this.moveDirection);
         for (var i = x + 1; i <= 4; i++) {
             this.moveDirection[i] = 1;
         }
         ;
+        console.log(this.moveDirection);
     };
     lunchContent.prototype.setStyles = function (x) {
         var styles = {
-            animation: this.bubbleClick[x] ? '0.4s ease 0s 1 normal forwards running magnify' : '0.4s ease 0s 1 reverse backwards running magnify',
-            transform: this.moveDirection[x] == -1 ? 'translate(0)' : this.moveDirection[x] == 1 ? 'translate(400)' : 'translate(-400)',
+            animation: this.bubbleClick[x] ? 'magnify 0.4s ease 0s 1 normal forwards running' : 'magnify 0.4s ease 0s 1 reverse backwards running',
         };
         return styles;
     };
@@ -64,7 +66,7 @@ var lunchContent = (function () {
             directives: [],
             providers: [mockdata_service_1.DomData]
         }), 
-        __metadata('design:paramtypes', [mockdata_service_1.DomData])
+        __metadata('design:paramtypes', [mockdata_service_1.DomData, platform_browser_1.DomSanitizationService])
     ], lunchContent);
     return lunchContent;
 }());
