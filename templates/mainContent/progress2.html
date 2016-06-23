@@ -8,7 +8,7 @@
         <path id="inner" [attr.d]="describeArc(200, 200, 170, 0, 360/100*percentage)" fill="none" stroke="#002040" stroke-width="30px" stroke-linecap="round"/>
     </g>
 
-    <g id="expanded" [style.animation]="!click ? '0.4s ease 0s 1 normal forwards running fade-out' : '0.5s ease 0s 1 normal forwards running fade-in'">
+    <g id="expanded" [style.animation]="!click ? '0.4s ease 0s 1 normal forwards running fade-out' : '0.5s ease 0s 1 normal forwards running fade-in'" [style.display]="click ? 'inherit' : ''">
         <text id="my-progressbar-expanded-msg-1" x="200" y="200" text-anchor="middle">Current class: {{current_class}}</text>
         <text id="my-progressbar-expanded-msg-2" x="200" y="250" text-anchor="middle">{{current_percentage}}% completed.</text>
         <path id="expanded-percentage" [attr.d]="describeArc(200, 200, 100, 0, 360/100*current_percentage)" fill="none" stroke="#002040" stroke-width="15px" stroke-linecap="round"/>

@@ -3,7 +3,7 @@ a, a:hover, a:active, a:focus{
 }
     .navbar {
     align: center;
-    margin: 0 auto 22vh;
+    margin: 0 auto 10vh;
     padding: 3vh auto 0px;
     display: flex;
     align-items: center; 

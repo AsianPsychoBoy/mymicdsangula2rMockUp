@@ -87,6 +87,21 @@ var DomData = (function () {
         });
         return selectedBg;
     };
+    DomData.prototype.getLunch = function (date) {
+        //Five categories: Main Dish, Action station, Soup, Salad Bar and Dessert.
+        return {
+            date: date,
+            lunchState: true,
+            lunchSpecial: 'Lunch',
+            lunch: {
+                MD: ['BBQ Beef Sandwiches', 'Veggie burgers', 'Crispy Patatoes', 'steamed Sugar Snap Peas'],
+                AS: ['Santa Fe Chiken & rice', 'Panini'],
+                S: ['Corn Chowder'],
+                SB: ['Chefs Salad'],
+                D: ['Jello with whipped topping']
+            }
+        };
+    };
     DomData = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

@@ -78,4 +78,21 @@ export class DomData {
             })   
             return selectedBg
     }
+
+    public getLunch(date:{year: number, month: number, day: number}) {
+        //Five categories: Main Dish, Action station, Soup, Salad Bar and Dessert.
+        return {
+            date: date,
+            lunchState: true,
+            lunchSpecial: 'Lunch', //Traveling flavors
+            lunch: {
+                MD: ['BBQ Beef Sandwiches', 'Veggie burgers', 'Crispy Patatoes', 'steamed Sugar Snap Peas'],
+                AS: ['Santa Fe Chiken & rice', 'Panini'],
+                S: ['Corn Chowder'],
+                SB: ['Chefs Salad'],
+                D: ['Jello with whipped topping']
+            }
+        }
+            
+    }
 }
