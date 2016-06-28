@@ -65,6 +65,23 @@ export class DomData {
 
     public getweather() {}
     public getProgress() {
+        var styleList:styleList = {
+            Waves: {
+                StyleUrl: '../css/mainContent/progress/Waves.progress.css',
+                TemplateUrl: '../templates/mainContent/progress/waves.progress.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/mainContent/progress/default.progress.css',
+                TemplateUrl: '../templates/mainContent/progress/default.progress.html',
+                Selected: true
+            }
+        }
+        for (let style in styleList) {
+            if (styleList[style].Selected) {
+                var selectedStyle: styleItem = styleList[style]
+            } 
+        }
         var classData = {
             A: "Math",
             A_percentage: 100,
@@ -82,7 +99,8 @@ export class DomData {
             G_percentage: 0,
             overall_percentage:75,
             current_class: "E",
-            current_percentage: 70
+            current_percentage: 70,
+            selectedStyle
         }
         return classData
     }    

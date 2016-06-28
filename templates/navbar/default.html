@@ -1,7 +1,9 @@
-<div class="app-container">
-                    <my-bg></my-bg>
-                    <div class="navbar"><a *ngFor="let page of pages; let i = index"
-                 [ngClass]="{blur: blur[i], navbar_item: true, active: isActive[i]}" (click)="onSelect(i)" 
-                (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)" [routerLink]="['/'+page]">{{page}}</a></div>
-                    <router-outlet></router-outlet>
-                </div>
+<div class="fluid-container">
+    <my-bg></my-bg>
+    <nav class="navbar navbar-light bg-faded">
+        <div class="nav navbar-nav">
+            <a *ngFor="let page of pages; let i = index" [ngClass]="{active: isActive[i], 'nav-item': true, 'nav-link': true}" [routerLink]="['/'+page]" (click)="onSelect(i)">{{page}}</a>
+        </div>
+    </nav>
+    <router-outlet></router-outlet>
+</div>

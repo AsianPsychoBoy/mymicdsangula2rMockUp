@@ -17,7 +17,7 @@ var templateUrl = _navService.getNav().selectedStyle.TemplateUrl;
     templateUrl: templateUrl,
     directives: [BgComponent, NgClass, ROUTER_DIRECTIVES],
     providers: [DomData],
-    styleUrls: ['./css/bootstrap.min.css', './css/main.css', styleUrl]
+    styleUrls: ['./css/main.css', styleUrl]
 })
 
 export class AppComponent {

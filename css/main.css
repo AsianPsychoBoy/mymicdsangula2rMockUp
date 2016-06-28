@@ -1,5 +1,5 @@
 body{
-    background-color: #eee;
+    background-color: inherit;
 } 
 .startup {
 	background-color: #29ABE2; /*e-hentai.org* is my motivation nhentai.net*/
@@ -75,3 +75,5 @@ h1 {
 my-navbar {
 	z-index: 0
 }
+
+

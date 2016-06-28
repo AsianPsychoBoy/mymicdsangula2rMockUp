@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var progress_component_1 = require('./progress.component');
+var progress_component_1 = require('./progress/progress.component');
 var mockdata_service_1 = require('../mockdata.service');
 var _navService = new mockdata_service_1.DomData();
 var styleUrl = _navService.getMain().selectedStyle.StyleUrl;

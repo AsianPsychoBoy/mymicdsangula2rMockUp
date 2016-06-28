@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {DomData} from '../mockdata.service'
+import {DomData} from '../../mockdata.service'
 
 function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
   var angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
@@ -24,10 +24,14 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
     return d;       
 }
 
+var _navService = new DomData();
+var styleUrl = _navService.getProgress().selectedStyle.StyleUrl;
+var templateUrl = _navService.getProgress().selectedStyle.TemplateUrl;
+
     @Component ({
         selector: 'my-progress',
-        templateUrl: '../templates/mainContent/progress2.html',
-        styleUrls: ['../css/mainContent/progress2.css'],
+        templateUrl: templateUrl,
+        styleUrls: [styleUrl],
         providers: [DomData]
     })
 
@@ -43,7 +47,7 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
         public polarToCartesian=polarToCartesian;
         public describeArc=describeArc;
         public click: boolean=false;
-        //TODO: use [attr] to set stroke-width
+        //TODO: use [attr] to set stroke-width, delete thinner() then
         public thinner() {
             this.click ? document.getElementById("outer").setAttribute("stroke-width", "25px") : document.getElementById("outer").setAttribute("stroke-width", "50px");
             this.click ? document.getElementById("inner").setAttribute("stroke-width", "15px") : document.getElementById("inner").setAttribute("stroke-width", "30px");

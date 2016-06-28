@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MyProgress} from './progress.component'
+import {MyProgress} from './progress/progress.component'
 import {DomData} from '../mockdata.service'
 
 var _navService = new DomData();
@@ -12,6 +12,5 @@ var templateUrl = _navService.getMain().selectedStyle.TemplateUrl;
     styleUrls: [styleUrl],
     directives: [MyProgress]
 })
-
 
 export class mainContent{}

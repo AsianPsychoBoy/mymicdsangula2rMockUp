@@ -67,7 +67,7 @@ var AppComponent = (function () {
             templateUrl: templateUrl,
             directives: [background_component_1.BgComponent, common_1.NgClass, router_1.ROUTER_DIRECTIVES],
             providers: [mockdata_service_1.DomData],
-            styleUrls: ['./css/bootstrap.min.css', './css/main.css', styleUrl]
+            styleUrls: ['./css/main.css', styleUrl]
         }), 
         __metadata('design:paramtypes', [platform_browser_1.Title, mockdata_service_1.DomData])
     ], AppComponent);

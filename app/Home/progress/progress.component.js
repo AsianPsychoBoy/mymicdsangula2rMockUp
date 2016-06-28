@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mockdata_service_1 = require('../mockdata.service');
+var mockdata_service_1 = require('../../mockdata.service');
 function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
     var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
     return {
@@ -27,6 +27,9 @@ function describeArc(x, y, radius, startAngle, endAngle) {
     ].join(" ");
     return d;
 }
+var _navService = new mockdata_service_1.DomData();
+var styleUrl = _navService.getProgress().selectedStyle.StyleUrl;
+var templateUrl = _navService.getProgress().selectedStyle.TemplateUrl;
 var MyProgress = (function () {
     function MyProgress(_DomService) {
         this._DomService = _DomService;
@@ -38,7 +41,7 @@ var MyProgress = (function () {
         this.current_percentage = _DomService.getProgress().current_percentage;
     }
     ;
-    //TODO: use [attr] to set stroke-width
+    //TODO: use [attr] to set stroke-width, delete thinner() then
     MyProgress.prototype.thinner = function () {
         this.click ? document.getElementById("outer").setAttribute("stroke-width", "25px") : document.getElementById("outer").setAttribute("stroke-width", "50px");
         this.click ? document.getElementById("inner").setAttribute("stroke-width", "15px") : document.getElementById("inner").setAttribute("stroke-width", "30px");
@@ -46,8 +49,8 @@ var MyProgress = (function () {
     MyProgress = __decorate([
         core_1.Component({
             selector: 'my-progress',
-            templateUrl: '../templates/mainContent/progress2.html',
-            styleUrls: ['../css/mainContent/progress2.css'],
+            templateUrl: templateUrl,
+            styleUrls: [styleUrl],
             providers: [mockdata_service_1.DomData]
         }), 
         __metadata('design:paramtypes', [mockdata_service_1.DomData])

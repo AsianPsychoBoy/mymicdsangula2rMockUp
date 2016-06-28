@@ -1,0 +1,27 @@
+ .nav-item:hover, .nav-item:active, .nav-item:focus {
+    text-decoration: none;
+}
+
+.nav-item {
+    font-size: 2em;
+    transition: font-size 0.3s ease;
+}
+
+.navbar-nav .nav-item+.nav-item {
+    margin-left: 2rem;
+    text-align: center;
+}
+
+.navbar-nav {
+    line-height: 2em;
+    margin: auto;
+}
+
+.active {
+    font-size: 2.5em;
+    transition: font-size 0.3s ease
+}
+
+nav {
+    margin-bottom: 2em;
+}
