@@ -66,16 +66,14 @@ var AppComponent = (function () {
             document.getElementById("my-fadeout").className += "fade-out";
             setTimeout(function () { resolve(''); }, 400);
         });
-        if (this.pages[x] != 'Home') {
-            p.then(function () {
-                _this.router.navigate(['/' + _this.pages[x]]);
-                _this._titleService.setTitle("MockUp-" + _this._DomService.getNav().navTitles[x]);
-            });
-        }
-        else {
-            this.router.navigate(['/' + this.pages[x]]);
-            this._titleService.setTitle("MockUp-" + this._DomService.getNav().navTitles[x]);
-        }
+        p.then(function () {
+            _this.router.navigate(['/' + _this.pages[x]]);
+            _this._titleService.setTitle("MockUp-" + _this._DomService.getNav().navTitles[x]);
+        }).catch(function (e) {
+            console.log(e);
+            _this.router.navigate(['/' + _this.pages[x]]);
+            _this._titleService.setTitle("MockUp-" + _this._DomService.getNav().navTitles[x]);
+        });
     };
     AppComponent = __decorate([
         core_1.Component({

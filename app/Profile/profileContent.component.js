@@ -15,8 +15,8 @@ var profileContent = (function () {
     profileContent = __decorate([
         core_1.Component({
             selector: 'app-content',
-            templateUrl: '../templates/profileContent/profileContent.html',
-            styleUrls: ['../css/profileContent/profileContent.css'],
+            templateUrl: '../../templates/profileContent/profileContent.html',
+            styleUrls: ['../../css/profileContent/profileContent.css'],
         }), 
         __metadata('design:paramtypes', [])
     ], profileContent);

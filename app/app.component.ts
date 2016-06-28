@@ -71,14 +71,13 @@ export class AppComponent {
             setTimeout(() => {resolve('')}, 400)
         }
         );
-        if (this.pages[x] != 'Home') {
             p.then(() => {
                 this.router.navigate(['/' + this.pages[x]]);
                 this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
+            }).catch((e)=> {
+                console.log(e);
+                this.router.navigate(['/' + this.pages[x]]);
+                this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
             });
-        } else {
-            this.router.navigate(['/' + this.pages[x]]);
-            this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
-        }
     }
 }
