@@ -17,6 +17,7 @@ var common_1 = require('@angular/common');
 var platform_browser_1 = require('@angular/platform-browser');
 var _navService = new mockdata_service_1.DomData();
 var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
+var templateUrl = _navService.getNav().selectedStyle.TemplateUrl;
 var AppComponent = (function () {
     function AppComponent(_titleService, _DomService) {
         this._titleService = _titleService;
@@ -63,7 +64,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'mymicds-app',
-            template: " <div class=\"app-container\">\n                    <my-bg></my-bg>\n                    <div class=\"navbar\"><a *ngFor=\"let page of pages; let i = index\"\n                 [ngClass]=\"{blur: blur[i], navbar_item: true, active: isActive[i]}\" (click)=\"onSelect(i)\" \n                (mouseenter)=\"mouseEnter(i)\" (mouseleave)=\"mouseLeave(i)\" [routerLink]=\"['/'+page]\">{{page}}</a></div>\n                    <router-outlet></router-outlet>\n                </div>",
+            templateUrl: templateUrl,
             directives: [background_component_1.BgComponent, common_1.NgClass, router_1.ROUTER_DIRECTIVES],
             providers: [mockdata_service_1.DomData],
             styleUrls: ['./css/bootstrap.min.css', './css/main.css', styleUrl]

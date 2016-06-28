@@ -17,6 +17,9 @@ var date = {
     month: d.getMonth(),
     day: d.getDate()
 };
+var _navService = new mockdata_service_1.DomData();
+var styleUrl = _navService.getMain().selectedStyle.StyleUrl;
+var templateUrl = _navService.getMain().selectedStyle.TemplateUrl;
 var lunchContent = (function () {
     function lunchContent(dataService, DomSanitizationService) {
         this.dataService = dataService;
@@ -26,8 +29,6 @@ var lunchContent = (function () {
             month: d.getMonth(),
             day: d.getDate()
         };
-        this.bubbleClick = [false, false, false, false, false];
-        this.moveDirection = [0, 0, 0, 0, 0];
         var lunchObj = dataService.getLunch(this.date);
         this.lunchSpecial = lunchObj.lunchSpecial;
         this.lunchState = lunchObj.lunchState;
@@ -35,34 +36,11 @@ var lunchContent = (function () {
         DomSanitizationService.bypassSecurityTrustStyle("transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95)");
     }
     ;
-    lunchContent.prototype.onClickBubble = function (x) {
-        for (var i = 0; i <= 4; i++) {
-            this.bubbleClick[i] = false;
-        }
-        ;
-        this.bubbleClick[x] = !(this.bubbleClick[x]);
-        for (var i = 0; i <= 4; i++) {
-            this.moveDirection[i] = 0;
-        }
-        ;
-        this.moveDirection[x] = -1;
-        for (var i = x + 1; i <= 4; i++) {
-            this.moveDirection[i] = 1;
-        }
-        ;
-        console.log(this.moveDirection);
-    };
-    lunchContent.prototype.setStyles = function (x) {
-        var styles = {
-            animation: this.bubbleClick[x] ? 'magnify 0.4s ease 0s 1 normal forwards running' : 'magnify 0.4s ease 0s 1 reverse backwards running',
-        };
-        return styles;
-    };
     lunchContent = __decorate([
         core_1.Component({
             selector: 'app-content',
-            templateUrl: '../templates/lunchContent/lunchContent.html',
-            styleUrls: ['../css/lunchContent/lunchContent.css'],
+            templateUrl: templateUrl,
+            styleUrls: [styleUrl],
             directives: [],
             providers: [mockdata_service_1.DomData]
         }), 

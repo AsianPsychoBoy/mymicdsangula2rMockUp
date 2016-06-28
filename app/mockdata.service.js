@@ -14,12 +14,14 @@ var DomData = (function () {
     }
     DomData.prototype.getNav = function () {
         var styleList = {
-            Wriggle: {
-                StyleUrl: '../css/navbar/Wriggle.css',
-                Selected: false,
-            },
             Waves: {
                 StyleUrl: '../css/navbar/Waves.css',
+                TemplateUrl: '../templates/navbar/waves.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/navbar/default.css',
+                TemplateUrl: '../templates/navbar/default.html',
                 Selected: true
             }
         };
@@ -29,12 +31,29 @@ var DomData = (function () {
             }
         }
         return {
-            navTitles: ["Home", "Lunch", "Planner", "Styles", "Poopyface"],
+            navTitles: ["Home", "Lunch", "Planner", "Settings", "Profile"],
             selectedStyle: selectedStyle
         };
     };
     DomData.prototype.getPlanner = function () {
-        //use http to get planner info 
+        var styleList = {
+            Waves: {
+                StyleUrl: '../css/plannerContent/Waves.css',
+                TemplateUrl: '../templates/plannerContent/waves.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/plannerContent/default.css',
+                TemplateUrl: '../templates/plannerContent/default.html',
+                Selected: true
+            }
+        };
+        for (var style in styleList) {
+            if (styleList[style].Selected) {
+                var selectedStyle = styleList[style];
+            }
+        }
+        return { selectedStyle: selectedStyle };
     };
     DomData.prototype.getweather = function () { };
     DomData.prototype.getProgress = function () {
@@ -59,20 +78,17 @@ var DomData = (function () {
         };
         return classData;
     };
-    DomData.prototype.getClasses = function () {
-    };
     //Background services
     DomData.prototype.getBg = function () {
         var bgList = {
-            Wriggle: {
-                Selected: false,
-                JSUrl: '../Backgrounds/Wriggle/Wriggle.js',
-                HTMLUrl: '../Backgrounds/Wriggle/Wriggle.html',
-                StyleUrl: '../Backgrounds/Wriggle/Wriggle.css',
-                LibUrl: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'
+            default: {
+                Selected: true,
+                JSUrl: '../Backgrounds/default/default.js',
+                HTMLUrl: '../Backgrounds/default/default.html',
+                StyleUrl: '../Backgrounds/default/default.css',
             },
             Waves: {
-                Selected: true,
+                Selected: false,
                 JSUrl: '../Backgrounds/Waves/Waves.js',
                 HTMLUrl: '../Backgrounds/Waves/Waves.html',
                 StyleUrl: '../Backgrounds/Waves/Waves.css',
@@ -89,7 +105,25 @@ var DomData = (function () {
     };
     DomData.prototype.getLunch = function (date) {
         //Five categories: Main Dish, Action station, Soup, Salad Bar and Dessert.
+        var styleList = {
+            Waves: {
+                StyleUrl: '../css/lunchContent/Waves.css',
+                TemplateUrl: '../templates/lunchContent/waves.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/lunchContent/default.css',
+                TemplateUrl: '../templates/lunchContent/default.html',
+                Selected: true
+            }
+        };
+        for (var style in styleList) {
+            if (styleList[style].Selected) {
+                var selectedStyle = styleList[style];
+            }
+        }
         return {
+            selectedStyle: selectedStyle,
             date: date,
             lunchState: true,
             lunchSpecial: 'Lunch',
@@ -101,6 +135,26 @@ var DomData = (function () {
                 D: ['Jello with whipped topping']
             }
         };
+    };
+    DomData.prototype.getMain = function () {
+        var styleList = {
+            Waves: {
+                StyleUrl: '../css/mainContent/Waves.css',
+                TemplateUrl: '../templates/mainContent/waves.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/mainContent/default.css',
+                TemplateUrl: '../templates/mainContent/default.html',
+                Selected: true
+            }
+        };
+        for (var style in styleList) {
+            if (styleList[style].Selected) {
+                var selectedStyle = styleList[style];
+            }
+        }
+        return { selectedStyle: selectedStyle };
     };
     DomData = __decorate([
         core_1.Injectable(), 

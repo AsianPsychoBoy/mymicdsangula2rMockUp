@@ -10,16 +10,11 @@ import {NgFor} from '@angular/common';
 
 var _navService = new DomData();
 var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
+var templateUrl = _navService.getNav().selectedStyle.TemplateUrl;
 
 @Component({
     selector: 'mymicds-app',
-    template: ` <div class="app-container">
-                    <my-bg></my-bg>
-                    <div class="navbar"><a *ngFor="let page of pages; let i = index"
-                 [ngClass]="{blur: blur[i], navbar_item: true, active: isActive[i]}" (click)="onSelect(i)" 
-                (mouseenter)="mouseEnter(i)" (mouseleave)="mouseLeave(i)" [routerLink]="['/'+page]">{{page}}</a></div>
-                    <router-outlet></router-outlet>
-                </div>`,
+    templateUrl: templateUrl,
     directives: [BgComponent, NgClass, ROUTER_DIRECTIVES],
     providers: [DomData],
     styleUrls: ['./css/bootstrap.min.css', './css/main.css', styleUrl]

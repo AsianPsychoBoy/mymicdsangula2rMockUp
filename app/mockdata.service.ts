@@ -1,31 +1,68 @@
 import {Injectable} from '@angular/core';
 
+interface styleItem  {
+    StyleUrl: string, TemplateUrl: string, Selected: boolean
+} 
+
+interface styleList {
+    [key: string]: styleItem
+} 
+
+interface bgStyleListItem {
+    StyleUrl: string, HTMLUrl: string, Selected: boolean, JSUrl: string, LibUrl: string
+}
+
+interface bgStyleList {
+    [key: string]: bgStyleListItem
+} 
+
 @Injectable()
 export class DomData {
     public getNav() {
-        var styleList = {
-            Wriggle: {//mockdata
-                StyleUrl: '../css/navbar/Wriggle.css',
-                Selected: false,
-            },
+        var styleList: styleList = {
             Waves: {
                 StyleUrl: '../css/navbar/Waves.css',
-                Selected:true
+                TemplateUrl: '../templates/navbar/waves.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/navbar/default.css',
+                TemplateUrl: '../templates/navbar/default.html',
+                Selected: true
             }
         }
         for (let style in styleList) {
                 if (styleList[style].Selected) {
-                    var selectedStyle = styleList[style]
+                    var selectedStyle: styleItem = styleList[style]
                 } 
             }
         return {
-            navTitles: ["Home", "Lunch", "Planner", "Styles", "Poopyface"], //this is supposed to get data from somewhere
+            navTitles: ["Home", "Lunch", "Planner", "Settings", "Profile"], //this is supposed to get data from somewhere
             selectedStyle
         }
     }
     public getPlanner() {
-        //use http to get planner info 
+        var styleList:styleList = {
+            Waves: {
+                StyleUrl: '../css/plannerContent/Waves.css',
+                TemplateUrl: '../templates/plannerContent/waves.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/plannerContent/default.css',
+                TemplateUrl: '../templates/plannerContent/default.html',
+                Selected: true
+            }
+        }
+        for (let style in styleList) {
+            if (styleList[style].Selected) {
+                var selectedStyle: styleItem = styleList[style]
+            } 
+        }
+
+         return {selectedStyle}
     }
+
     public getweather() {}
     public getProgress() {
         var classData = {
@@ -49,21 +86,18 @@ export class DomData {
         }
         return classData
     }    
-    public getClasses() {
-        
-    }
     //Background services
     public getBg() {
-        var bgList = {//Mock Data
-            Wriggle: {
-                Selected: false,
-                JSUrl: '../Backgrounds/Wriggle/Wriggle.js',
-                HTMLUrl: '../Backgrounds/Wriggle/Wriggle.html',
-                StyleUrl: '../Backgrounds/Wriggle/Wriggle.css',
-                LibUrl: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'
+        var bgList: bgStyleList = {//Mock Data
+            default: {
+                Selected: true,
+                JSUrl: '../Backgrounds/default/default.js',
+                HTMLUrl: '../Backgrounds/default/default.html',
+                StyleUrl: '../Backgrounds/default/default.css',
+                LibUrl: ''
             },
             Waves: {
-                Selected: true,
+                Selected: false,
                 JSUrl: '../Backgrounds/Waves/Waves.js',
                 HTMLUrl: '../Backgrounds/Waves/Waves.html',
                 StyleUrl: '../Backgrounds/Waves/Waves.css',
@@ -81,7 +115,25 @@ export class DomData {
 
     public getLunch(date:{year: number, month: number, day: number}) {
         //Five categories: Main Dish, Action station, Soup, Salad Bar and Dessert.
+        var styleList:styleList = {
+            Waves: {
+                StyleUrl: '../css/lunchContent/Waves.css',
+                TemplateUrl: '../templates/lunchContent/waves.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/lunchContent/default.css',
+                TemplateUrl: '../templates/lunchContent/default.html',
+                Selected: true
+            }
+        }
+        for (let style in styleList) {
+            if (styleList[style].Selected) {
+                var selectedStyle: styleItem = styleList[style]
+            } 
+        }
         return {
+            selectedStyle,
             date: date,
             lunchState: true,
             lunchSpecial: 'Lunch', //Traveling flavors
@@ -94,5 +146,27 @@ export class DomData {
             }
         }
             
+    }
+
+    public getMain() {
+        var styleList:styleList = {
+            Waves: {
+                StyleUrl: '../css/mainContent/Waves.css',
+                TemplateUrl: '../templates/mainContent/waves.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/mainContent/default.css',
+                TemplateUrl: '../templates/mainContent/default.html',
+                Selected: true
+            }
+        }
+        for (let style in styleList) {
+            if (styleList[style].Selected) {
+                var selectedStyle: styleItem = styleList[style]
+            } 
+        }
+
+         return {selectedStyle}
     }
 }
