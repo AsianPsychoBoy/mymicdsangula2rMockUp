@@ -7,6 +7,7 @@ import {DomData} from './mockdata.service';
 import {NgClass} from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import {NgFor} from '@angular/common';
+import {Router} from '@angular/router'
 
 var _navService = new DomData();
 var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
@@ -55,15 +56,29 @@ export class AppComponent {
     private blur:boolean[] = [false,false,false,false,false]
     private isActive:boolean[] = [true,false,false,false,false]
     
-    public constructor(private _titleService: Title, private _DomService: DomData) { }
+    public constructor(private _titleService: Title, private _DomService: DomData, private router:Router) { }
     public pages = this._DomService.getNav().navTitles
   //emit events to alert the other components to render the app
     
     public selectedPage = 'Home'
-    public onSelect(x):void {
+    public onSelect(x: number):void {
         this.restore(x);
         this.magnify(x);
-        this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
         this.selectedPage = this._DomService.getNav().navTitles[x];
+        const p: Promise<string> = new Promise (
+        (resolve: (str: string)=>void, reject: (str: string)=>void) => {
+            document.getElementById("my-fadeout").className += "fade-out";
+            setTimeout(() => {resolve('')}, 400)
+        }
+        );
+        if (this.pages[x] != 'Home') {
+            p.then(() => {
+                this.router.navigate(['/' + this.pages[x]]);
+                this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
+            });
+        } else {
+            this.router.navigate(['/' + this.pages[x]]);
+            this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
+        }
     }
 }

@@ -15,13 +15,15 @@ var background_component_1 = require('./background.component');
 var mockdata_service_1 = require('./mockdata.service');
 var common_1 = require('@angular/common');
 var platform_browser_1 = require('@angular/platform-browser');
+var router_2 = require('@angular/router');
 var _navService = new mockdata_service_1.DomData();
 var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
 var templateUrl = _navService.getNav().selectedStyle.TemplateUrl;
 var AppComponent = (function () {
-    function AppComponent(_titleService, _DomService) {
+    function AppComponent(_titleService, _DomService, router) {
         this._titleService = _titleService;
         this._DomService = _DomService;
+        this.router = router;
         this.blur = [false, false, false, false, false];
         this.isActive = [true, false, false, false, false];
         this.pages = this._DomService.getNav().navTitles;
@@ -56,10 +58,24 @@ var AppComponent = (function () {
         this.removeBlur(x);
     };
     AppComponent.prototype.onSelect = function (x) {
+        var _this = this;
         this.restore(x);
         this.magnify(x);
-        this._titleService.setTitle("MockUp-" + this._DomService.getNav().navTitles[x]);
         this.selectedPage = this._DomService.getNav().navTitles[x];
+        var p = new Promise(function (resolve, reject) {
+            document.getElementById("my-fadeout").className += "fade-out";
+            setTimeout(function () { resolve(''); }, 400);
+        });
+        if (this.pages[x] != 'Home') {
+            p.then(function () {
+                _this.router.navigate(['/' + _this.pages[x]]);
+                _this._titleService.setTitle("MockUp-" + _this._DomService.getNav().navTitles[x]);
+            });
+        }
+        else {
+            this.router.navigate(['/' + this.pages[x]]);
+            this._titleService.setTitle("MockUp-" + this._DomService.getNav().navTitles[x]);
+        }
     };
     AppComponent = __decorate([
         core_1.Component({
@@ -69,7 +85,7 @@ var AppComponent = (function () {
             providers: [mockdata_service_1.DomData],
             styleUrls: ['./css/main.css', styleUrl]
         }), 
-        __metadata('design:paramtypes', [platform_browser_1.Title, mockdata_service_1.DomData])
+        __metadata('design:paramtypes', [platform_browser_1.Title, mockdata_service_1.DomData, router_2.Router])
     ], AppComponent);
     return AppComponent;
 }());

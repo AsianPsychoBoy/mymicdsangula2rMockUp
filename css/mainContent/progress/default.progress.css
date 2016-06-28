@@ -1,0 +1,10 @@
+progress {
+    height: 3em;
+    animation: 1s ease 0s 1 normal backwards running expand;
+    -moz-animation: 1s ease 0s 1 normal backwards running expand;
+}
+
+@keyframes expand{
+    from {width: 0%; opacity: 0}
+    to {width: 100%; opacity: 1}
+}
