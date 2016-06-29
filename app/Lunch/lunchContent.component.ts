@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {DomData} from '../mockdata.service';
 import {DomSanitizationService} from '@angular/platform-browser'
+import {NgClass, NgFor, NgIf} from '@angular/common'
 
 var d = new Date();
 var date = {
@@ -17,25 +18,24 @@ var templateUrl = _navService.getLunch(date).selectedStyle.TemplateUrl;
     selector: 'app-content',
     templateUrl: templateUrl,
     styleUrls: [styleUrl],
-    directives: [],
+    directives: [NgClass, NgFor, NgIf],
     providers: [DomData]
 })
 
 export class lunchContent{
-    public date = {
-        year: d.getFullYear(),
-        month: d.getMonth(),
-        day: d.getDate()
-    };
+    public date = date;
     public lunchSpecial;
     public lunchState;
     public lunch;
+    public stations;
+    public imgLinks;
     constructor (private dataService:DomData, private DomSanitizationService: DomSanitizationService) {
         var lunchObj = dataService.getLunch(this.date);
         this.lunchSpecial = lunchObj.lunchSpecial;
         this.lunchState = lunchObj.lunchState;
-        this.lunch = lunchObj.lunch
-
+        this.lunch = lunchObj.lunch;
+        this.stations = lunchObj.stations;
+        this.imgLinks = lunchObj.imgLinks;
         //DomSanitizationService.bypassSecurityTrustStyle("transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95)");
     };
     // private bubbleClick:boolean[] = [false, false, false, false, false];

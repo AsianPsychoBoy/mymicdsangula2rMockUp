@@ -147,12 +147,14 @@ var DomData = (function () {
             lunchState: true,
             lunchSpecial: 'Lunch',
             lunch: {
-                MD: ['BBQ Beef Sandwiches', 'Veggie burgers', 'Crispy Patatoes', 'steamed Sugar Snap Peas'],
-                AS: ['Santa Fe Chiken & rice', 'Panini'],
-                S: ['Corn Chowder'],
-                SB: ['Chefs Salad'],
-                D: ['Jello with whipped topping']
-            }
+                'Main Dish': ['BBQ Beef Sandwiches', 'Veggie burgers', 'Crispy Patatoes', 'steamed Sugar Snap Peas'],
+                'Action Station': ['Santa Fe Chiken & rice', 'Panini'],
+                'Soup': ['Corn Chowder'],
+                'Salad Bar': ['Chefs Salad'],
+                'Dessert': ['Jello with whipped topping']
+            },
+            stations: ['Main Dish', 'Action Station', 'Soup', 'Salad Bar', 'Dessert'],
+            imgLinks: ['../assets/a29f20e0gw1f1js9envmbj218c1uo7wh.jpg', '../assets/a29f20e0gw1f1js9j1dpej20ov0xcb26.jpg', '../assets/a29f20e0jw1f1dxiv9p1oj20xc0qfx3t.jpg', '../assets/a29f20e0jw1f1dxj7b2tjj20ow0xcngo.jpg', '../assets/a29f20e0jw1f1dxjf2v4zj20m80ftqes.jpg']
         };
     };
     DomData.prototype.getMain = function () {

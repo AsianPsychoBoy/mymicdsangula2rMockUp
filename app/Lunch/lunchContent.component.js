@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var mockdata_service_1 = require('../mockdata.service');
 var platform_browser_1 = require('@angular/platform-browser');
+var common_1 = require('@angular/common');
 var d = new Date();
 var date = {
     year: d.getFullYear(),
@@ -24,15 +25,13 @@ var lunchContent = (function () {
     function lunchContent(dataService, DomSanitizationService) {
         this.dataService = dataService;
         this.DomSanitizationService = DomSanitizationService;
-        this.date = {
-            year: d.getFullYear(),
-            month: d.getMonth(),
-            day: d.getDate()
-        };
+        this.date = date;
         var lunchObj = dataService.getLunch(this.date);
         this.lunchSpecial = lunchObj.lunchSpecial;
         this.lunchState = lunchObj.lunchState;
         this.lunch = lunchObj.lunch;
+        this.stations = lunchObj.stations;
+        this.imgLinks = lunchObj.imgLinks;
         //DomSanitizationService.bypassSecurityTrustStyle("transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95)");
     }
     ;
@@ -41,7 +40,7 @@ var lunchContent = (function () {
             selector: 'app-content',
             templateUrl: templateUrl,
             styleUrls: [styleUrl],
-            directives: [],
+            directives: [common_1.NgClass, common_1.NgFor, common_1.NgIf],
             providers: [mockdata_service_1.DomData]
         }), 
         __metadata('design:paramtypes', [mockdata_service_1.DomData, platform_browser_1.DomSanitizationService])
