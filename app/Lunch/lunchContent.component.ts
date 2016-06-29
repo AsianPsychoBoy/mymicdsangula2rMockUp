@@ -10,8 +10,8 @@ var date = {
     };
 
 var _navService = new DomData();
-var styleUrl = _navService.getMain().selectedStyle.StyleUrl;
-var templateUrl = _navService.getMain().selectedStyle.TemplateUrl;
+var styleUrl = _navService.getLunch(date).selectedStyle.StyleUrl;
+var templateUrl = _navService.getLunch(date).selectedStyle.TemplateUrl;
 
 @Component ({
     selector: 'app-content',
@@ -36,7 +36,7 @@ export class lunchContent{
         this.lunchState = lunchObj.lunchState;
         this.lunch = lunchObj.lunch
 
-        DomSanitizationService.bypassSecurityTrustStyle("transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95)");
+        //DomSanitizationService.bypassSecurityTrustStyle("transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95)");
     };
     // private bubbleClick:boolean[] = [false, false, false, false, false];
     // private moveDirection = [0, 0, 0, 0, 0];

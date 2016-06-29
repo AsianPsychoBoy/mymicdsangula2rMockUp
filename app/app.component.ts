@@ -60,17 +60,20 @@ export class AppComponent {
     public pages = this._DomService.getNav().navTitles
   //emit events to alert the other components to render the app
     
-    public selectedPage = 'Home'
+    public selectedPage: string = 'Home';
+    private previousSelectedPage: string;
     public onSelect(x: number):void {
         this.restore(x);
         this.magnify(x);
+        this.previousSelectedPage = this.selectedPage;
         this.selectedPage = this._DomService.getNav().navTitles[x];
-        const p: Promise<string> = new Promise (
-        (resolve: (str: string)=>void, reject: (str: string)=>void) => {
-            document.getElementById("my-fadeout").className += "fade-out";
-            setTimeout(() => {resolve('')}, 400)
-        }
-        );
+        if (this.previousSelectedPage != this.selectedPage) {
+            const p: Promise<string> = new Promise (
+            (resolve: (str: string)=>void, reject: (str: string)=>void) => {
+                document.getElementById("my-fadeout").className += "fade-out";
+                setTimeout(() => {resolve('')}, 400)
+            }
+            );
             p.then(() => {
                 this.router.navigate(['/' + this.pages[x]]);
                 this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
@@ -79,5 +82,6 @@ export class AppComponent {
                 this.router.navigate(['/' + this.pages[x]]);
                 this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
             });
+        }
     }
 }

@@ -1,0 +1,18 @@
+h2 {
+    text-align: center;
+}
+
+button {
+    transition: all 0.4s ease;
+}
+
+
+#lunch-nav {
+    animation: 1s ease 0s 1 normal backwards running fadeIn;
+    -moz-animation: 1s ease 0s 1 normal backwards running fadeIn;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}

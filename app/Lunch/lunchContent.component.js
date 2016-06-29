@@ -18,8 +18,8 @@ var date = {
     day: d.getDate()
 };
 var _navService = new mockdata_service_1.DomData();
-var styleUrl = _navService.getMain().selectedStyle.StyleUrl;
-var templateUrl = _navService.getMain().selectedStyle.TemplateUrl;
+var styleUrl = _navService.getLunch(date).selectedStyle.StyleUrl;
+var templateUrl = _navService.getLunch(date).selectedStyle.TemplateUrl;
 var lunchContent = (function () {
     function lunchContent(dataService, DomSanitizationService) {
         this.dataService = dataService;
@@ -33,7 +33,7 @@ var lunchContent = (function () {
         this.lunchSpecial = lunchObj.lunchSpecial;
         this.lunchState = lunchObj.lunchState;
         this.lunch = lunchObj.lunch;
-        DomSanitizationService.bypassSecurityTrustStyle("transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95)");
+        //DomSanitizationService.bypassSecurityTrustStyle("transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95)");
     }
     ;
     lunchContent = __decorate([

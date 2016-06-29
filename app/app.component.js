@@ -61,19 +61,22 @@ var AppComponent = (function () {
         var _this = this;
         this.restore(x);
         this.magnify(x);
+        this.previousSelectedPage = this.selectedPage;
         this.selectedPage = this._DomService.getNav().navTitles[x];
-        var p = new Promise(function (resolve, reject) {
-            document.getElementById("my-fadeout").className += "fade-out";
-            setTimeout(function () { resolve(''); }, 400);
-        });
-        p.then(function () {
-            _this.router.navigate(['/' + _this.pages[x]]);
-            _this._titleService.setTitle("MockUp-" + _this._DomService.getNav().navTitles[x]);
-        }).catch(function (e) {
-            console.log(e);
-            _this.router.navigate(['/' + _this.pages[x]]);
-            _this._titleService.setTitle("MockUp-" + _this._DomService.getNav().navTitles[x]);
-        });
+        if (this.previousSelectedPage != this.selectedPage) {
+            var p = new Promise(function (resolve, reject) {
+                document.getElementById("my-fadeout").className += "fade-out";
+                setTimeout(function () { resolve(''); }, 400);
+            });
+            p.then(function () {
+                _this.router.navigate(['/' + _this.pages[x]]);
+                _this._titleService.setTitle("MockUp-" + _this._DomService.getNav().navTitles[x]);
+            }).catch(function (e) {
+                console.log(e);
+                _this.router.navigate(['/' + _this.pages[x]]);
+                _this._titleService.setTitle("MockUp-" + _this._DomService.getNav().navTitles[x]);
+            });
+        }
     };
     AppComponent = __decorate([
         core_1.Component({
