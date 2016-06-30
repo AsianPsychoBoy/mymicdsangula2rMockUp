@@ -25,7 +25,7 @@ export class accountContent{
         const p = new Promise(
             (resolve, reject) => {
                 this.submitted = true; 
-                setTimeout(()=>{resolve()}, 2000)
+                setTimeout(()=>{resolve()}, 6000)
             }
         );
         p.then(()=>this.submitSuccess = true)

@@ -27,7 +27,7 @@ var accountContent = (function () {
         var _this = this;
         var p = new Promise(function (resolve, reject) {
             _this.submitted = true;
-            setTimeout(function () { resolve(); }, 2000);
+            setTimeout(function () { resolve(); }, 6000);
         });
         p.then(function () { return _this.submitSuccess = true; })
             .catch(function (e) { return console.log(e); });
