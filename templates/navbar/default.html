@@ -3,9 +3,33 @@
     <nav class="navbar navbar-light bg-faded">
         <div class="nav navbar-nav">
             <a *ngFor="let page of pages; let i = index" [ngClass]="{active: isActive[i], 'nav-item': true, 'nav-link': true}"  (click)="onSelect(i)">{{page}}</a>
+            <button *ngIf="!authService.isLoggedIn" id="loginButton" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">login</button>
+            <button *ngIf="authService.isLoggedIn" (click)="onClickLogout()" id="logoutButton" type="button" class="btn btn-primary btn-lg" >logout</button>
             <h1 class="navbar-brand">MyMICDS<div id="dot"></div><div id="bold">net</div></h1><!--Fancy animation needed for the logo-->
         </div>
     </nav>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">LOGIN</h4>
+            </div>
+            <div class="modal-body">
+                ...<!--Login forms-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onClickAccount()">Creat an account</button>
+                <button type="button" class="btn btn-primary" (click)="onClickLogin()" >Login</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <router-outlet></router-outlet>
 </div>
 

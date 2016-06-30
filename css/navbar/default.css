@@ -53,3 +53,7 @@ nav {
     display: inline;
     font-weight: 800;
 }
+
+#loginButton, #logoutButton {
+    margin-left: 2em;
+}

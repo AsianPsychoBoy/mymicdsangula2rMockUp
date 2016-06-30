@@ -177,6 +177,26 @@ var DomData = (function () {
         }
         return { selectedStyle: selectedStyle };
     };
+    DomData.prototype.getAccount = function () {
+        var styleList = {
+            Waves: {
+                StyleUrl: '../css/accountContent/Waves.css',
+                TemplateUrl: '../templates/accountContent/waves.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/accountContent/default.css',
+                TemplateUrl: '../templates/accountContent/default.html',
+                Selected: true
+            }
+        };
+        for (var style in styleList) {
+            if (styleList[style].Selected) {
+                var selectedStyle = styleList[style];
+            }
+        }
+        return { selectedStyle: selectedStyle };
+    };
     DomData = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

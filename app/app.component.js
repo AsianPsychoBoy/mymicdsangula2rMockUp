@@ -16,14 +16,16 @@ var mockdata_service_1 = require('./mockdata.service');
 var common_1 = require('@angular/common');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_2 = require('@angular/router');
+var mockauth_service_1 = require('./mockauth.service');
 var _navService = new mockdata_service_1.DomData();
 var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
 var templateUrl = _navService.getNav().selectedStyle.TemplateUrl;
 var AppComponent = (function () {
-    function AppComponent(_titleService, _DomService, router) {
+    function AppComponent(_titleService, _DomService, router, authService) {
         this._titleService = _titleService;
         this._DomService = _DomService;
         this.router = router;
+        this.authService = authService;
         this.blur = [false, false, false, false, false];
         this.isActive = [true, false, false, false, false];
         this.pages = this._DomService.getNav().navTitles;
@@ -78,15 +80,45 @@ var AppComponent = (function () {
             });
         }
     };
+    AppComponent.prototype.onClickLogin = function () {
+        var _this = this;
+        var p = new Promise(function (resolve, reject) {
+            _this.authService.logIn();
+            _this.authService.isLoggedIn ? resolve("Successfully logged in") : reject("Login not successful");
+        });
+        p.then(function (msg) {
+            console.log(msg, _this.authService.isLoggedIn);
+            $('#loginModal').modal('hide');
+            _this.router.navigate(['/' + _this.selectedPage]);
+        }).catch(function (e) {
+            console.log(e);
+        });
+    };
+    AppComponent.prototype.onClickLogout = function () {
+        var _this = this;
+        var p = new Promise(function (resolve, reject) {
+            var logoutSuccessful = _this.authService.logOut();
+            logoutSuccessful ? resolve("Successfully logged out") : reject("Logout not successful");
+        });
+        p.then(function (msg) {
+            console.log(msg);
+            _this.router.navigate(['/' + _this.selectedPage]);
+        }).catch(function (e) {
+            console.log(e);
+        });
+    };
+    AppComponent.prototype.onClickAccount = function () {
+        this.router.navigate(['/Account']);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'mymicds-app',
             templateUrl: templateUrl,
-            directives: [background_component_1.BgComponent, common_1.NgClass, router_1.ROUTER_DIRECTIVES],
-            providers: [mockdata_service_1.DomData],
+            directives: [background_component_1.BgComponent, common_1.NgClass, router_1.ROUTER_DIRECTIVES, common_1.NgIf],
+            providers: [mockdata_service_1.DomData, mockauth_service_1.AuthService],
             styleUrls: ['./css/main.css', styleUrl]
         }), 
-        __metadata('design:paramtypes', [platform_browser_1.Title, mockdata_service_1.DomData, router_2.Router])
+        __metadata('design:paramtypes', [platform_browser_1.Title, mockdata_service_1.DomData, router_2.Router, mockauth_service_1.AuthService])
     ], AppComponent);
     return AppComponent;
 }());

@@ -4,10 +4,11 @@ import {Component} from '@angular/core';
 import {BgComponent} from './background.component'
 import {mainContent} from './Home/mainContent.component'
 import {DomData} from './mockdata.service';
-import {NgClass} from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import {NgFor} from '@angular/common';
 import {Router} from '@angular/router'
+import {AuthService} from './mockauth.service'
 
 var _navService = new DomData();
 var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
@@ -16,8 +17,8 @@ var templateUrl = _navService.getNav().selectedStyle.TemplateUrl;
 @Component({
     selector: 'mymicds-app',
     templateUrl: templateUrl,
-    directives: [BgComponent, NgClass, ROUTER_DIRECTIVES],
-    providers: [DomData],
+    directives: [BgComponent, NgClass, ROUTER_DIRECTIVES, NgIf],
+    providers: [DomData, AuthService],
     styleUrls: ['./css/main.css', styleUrl]
 })
 
@@ -56,7 +57,7 @@ export class AppComponent {
     private blur:boolean[] = [false,false,false,false,false]
     private isActive:boolean[] = [true,false,false,false,false]
     
-    public constructor(private _titleService: Title, private _DomService: DomData, private router:Router) { }
+    public constructor(private _titleService: Title, private _DomService: DomData, private router:Router, private authService: AuthService) { }
     public pages = this._DomService.getNav().navTitles
   //emit events to alert the other components to render the app
     
@@ -83,5 +84,40 @@ export class AppComponent {
                 this._titleService.setTitle("MockUp-"+this._DomService.getNav().navTitles[x]);
             });
         }
+    }
+
+    public onClickLogin() {
+        const p: Promise<string> = new Promise (
+            (resolve: (str: string)=>void, reject: (str: string)=>void) => {
+                this.authService.logIn();
+                this.authService.isLoggedIn ? resolve("Successfully logged in") : reject("Login not successful");
+            }
+        );
+        p.then((msg) => {
+            console.log(msg, this.authService.isLoggedIn)
+            $('#loginModal').modal('hide');
+            this.router.navigate(['/'+this.selectedPage]);
+        }).catch((e)=>{
+            console.log(e);
+        })
+    }
+
+    public onClickLogout() {
+        const p: Promise<string> = new Promise (
+            (resolve: (str: string)=>void, reject: (str: string)=>void) => {
+                let logoutSuccessful = this.authService.logOut();
+                logoutSuccessful ? resolve("Successfully logged out") : reject("Logout not successful");
+            }
+        );
+        p.then((msg) => {
+            console.log(msg)
+            this.router.navigate(['/'+this.selectedPage]);
+        }).catch((e)=>{
+            console.log(e);
+        })
+    }
+
+    public onClickAccount() {
+        this.router.navigate(['/Account'])
     }
 }

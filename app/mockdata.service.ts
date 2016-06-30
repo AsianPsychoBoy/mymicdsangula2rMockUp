@@ -189,4 +189,25 @@ export class DomData {
 
          return {selectedStyle}
     }
+
+    public getAccount() {
+        var styleList:styleList = {
+            Waves: {
+                StyleUrl: '../css/accountContent/Waves.css',
+                TemplateUrl: '../templates/accountContent/waves.html',
+                Selected: false
+            },
+            default: {
+                StyleUrl: '../css/accountContent/default.css',
+                TemplateUrl: '../templates/accountContent/default.html',
+                Selected: true
+            }
+        }
+        for (let style in styleList) {
+            if (styleList[style].Selected) {
+                var selectedStyle: styleItem = styleList[style]
+            }
+        }
+        return {selectedStyle}
+    }
 }
