@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var mockdata_service_1 = require('../mockdata.service');
 var _navService = new mockdata_service_1.DomData();
-var styleUrl = _navService.getMain().selectedStyle.StyleUrl;
-var templateUrl = _navService.getMain().selectedStyle.TemplateUrl;
+var styleUrl = _navService.getPlanner().selectedStyle.StyleUrl;
+var templateUrl = _navService.getPlanner().selectedStyle.TemplateUrl;
 var plannerContent = (function () {
     function plannerContent() {
     }

@@ -8,73 +8,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var styleSettings_1 = require('./styleSettings');
 var core_1 = require('@angular/core');
 var DomData = (function () {
     function DomData() {
     }
+    DomData.prototype.getStyleName = function () {
+        return 'default';
+    };
     DomData.prototype.getNav = function () {
-        var styleList = {
-            Waves: {
-                StyleUrl: '../css/navbar/Waves.css',
-                TemplateUrl: '../templates/navbar/waves.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/navbar/default.css',
-                TemplateUrl: '../templates/navbar/default.html',
-                Selected: true
-            }
-        };
-        for (var style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle = styleList[style];
-            }
-        }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleSettings_1.styleList[styleName].navbar;
         return {
             navTitles: ["Home", "Lunch", "Planner", "Settings", "Profile"],
             selectedStyle: selectedStyle
         };
     };
     DomData.prototype.getPlanner = function () {
-        var styleList = {
-            Waves: {
-                StyleUrl: '../css/plannerContent/Waves.css',
-                TemplateUrl: '../templates/plannerContent/waves.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/plannerContent/default.css',
-                TemplateUrl: '../templates/plannerContent/default.html',
-                Selected: true
-            }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleSettings_1.styleList[styleName].planner;
+        return { selectedStyle: selectedStyle,
         };
-        for (var style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle = styleList[style];
-            }
-        }
-        return { selectedStyle: selectedStyle };
     };
     DomData.prototype.getweather = function () { };
     DomData.prototype.getProgress = function () {
-        var styleList = {
-            Waves: {
-                StyleUrl: '../css/mainContent/progress/Waves.progress.css',
-                TemplateUrl: '../templates/mainContent/progress/waves.progress.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/mainContent/progress/default.progress.css',
-                TemplateUrl: '../templates/mainContent/progress/default.progress.html',
-                Selected: true
-            }
-        };
-        for (var style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle = styleList[style];
-            }
-        }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleSettings_1.styleList[styleName].progress;
         var classData = {
+            day: 1,
             A: "Math",
             A_percentage: 100,
             B: "English",
@@ -92,55 +53,19 @@ var DomData = (function () {
             overall_percentage: 75,
             current_class: "E",
             current_percentage: 70,
-            selectedStyle: selectedStyle
         };
-        return classData;
+        return { classData: classData, selectedStyle: selectedStyle };
     };
     //Background services
     DomData.prototype.getBg = function () {
-        var bgList = {
-            default: {
-                Selected: true,
-                JSUrl: '../Backgrounds/default/default.js',
-                HTMLUrl: '../Backgrounds/default/default.html',
-                StyleUrl: '../Backgrounds/default/default.css',
-                LibUrl: ''
-            },
-            Waves: {
-                Selected: false,
-                JSUrl: '../Backgrounds/Waves/Waves.js',
-                HTMLUrl: '../Backgrounds/Waves/Waves.html',
-                StyleUrl: '../Backgrounds/Waves/Waves.css',
-                LibUrl: ''
-            }
-        };
-        var selectedBg;
-        Object.getOwnPropertyNames(bgList).forEach(function (val, idx, array) {
-            if (bgList[val].Selected) {
-                selectedBg = bgList[val];
-            }
-        });
+        var bgName = this.getStyleName();
+        var selectedBg = styleSettings_1.styleList[bgName].background;
         return selectedBg;
     };
     DomData.prototype.getLunch = function (date) {
         //Five categories: Main Dish, Action station, Soup, Salad Bar and Dessert.
-        var styleList = {
-            Waves: {
-                StyleUrl: '../css/lunchContent/Waves.css',
-                TemplateUrl: '../templates/lunchContent/waves.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/lunchContent/default.css',
-                TemplateUrl: '../templates/lunchContent/default.html',
-                Selected: true
-            }
-        };
-        for (var style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle = styleList[style];
-            }
-        }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleSettings_1.styleList[styleName].lunch;
         return {
             selectedStyle: selectedStyle,
             date: date,
@@ -158,43 +83,18 @@ var DomData = (function () {
         };
     };
     DomData.prototype.getMain = function () {
-        var styleList = {
-            Waves: {
-                StyleUrl: '../css/mainContent/Waves.css',
-                TemplateUrl: '../templates/mainContent/waves.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/mainContent/default.css',
-                TemplateUrl: '../templates/mainContent/default.html',
-                Selected: true
-            }
-        };
-        for (var style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle = styleList[style];
-            }
-        }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleSettings_1.styleList[styleName].main;
         return { selectedStyle: selectedStyle };
     };
     DomData.prototype.getAccount = function () {
-        var styleList = {
-            Waves: {
-                StyleUrl: '../css/accountContent/Waves.css',
-                TemplateUrl: '../templates/accountContent/waves.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/accountContent/default.css',
-                TemplateUrl: '../templates/accountContent/default.html',
-                Selected: true
-            }
-        };
-        for (var style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle = styleList[style];
-            }
-        }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleSettings_1.styleList[styleName].account;
+        return { selectedStyle: selectedStyle };
+    };
+    DomData.prototype.getProfile = function () {
+        var styleName = this.getStyleName();
+        var selectedStyle = styleSettings_1.styleList[styleName].profile;
         return { selectedStyle: selectedStyle };
     };
     DomData = __decorate([

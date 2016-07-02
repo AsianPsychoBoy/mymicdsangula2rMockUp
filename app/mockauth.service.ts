@@ -6,9 +6,16 @@ export class AuthService {
     loginSuccessful: boolean;
     logoutSuccessful: boolean;
 
+    getUser() {return {
+        firstName: "Cack",
+        lastName: "Jai",
+        email: "cjai@micds.org",
+        gradYear: 9,
+    } }
+
     logIn() {
         const p: Promise<string> = new Promise (
-            (resolve: (any:any)=>void, reject: (any:any)=>void) => {
+            (resolve: (msg:any)=>void, reject: (rsn:any)=>void) => {
                 this.isLoggedIn = true;
                 resolve('')
                 //this is gaurenteed to be successful bacause its only mockup
@@ -20,7 +27,7 @@ export class AuthService {
 
     logOut() {
         const p: Promise<string> = new Promise (
-            (resolve: (any:any)=>void, reject: (any:any)=>void) => {
+            (resolve: (msg:any)=>void, reject: (rsn:any)=>void) => {
                 this.isLoggedIn = false;
                 resolve('')
                 //this is gaurenteed to be successful bacause its only mockup

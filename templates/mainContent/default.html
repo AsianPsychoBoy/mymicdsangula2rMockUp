@@ -1,3 +1,15 @@
 <div id="my-fadeout">
-    <my-progress class="flex-item" id="my-progressbar"></my-progress>
+    <div class="main-page">
+        <div id="my-progressbar">
+            <progress class="progress" [value]="percentage" max="100">{{percentage}}</progress>
+            <h2>Your day is {{percentage}}% complete.</h2>
+        </div>
+        <div id="my-dayinfo">
+            <h3>Day {{rotation_day}}</h3>
+        </div>
+    </div>
+
+    <div class="scroll-page">
+        <my-progress class="flex-item" id="my-progress-details"></my-progress>
+    </div>
 </div>

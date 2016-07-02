@@ -13,4 +13,14 @@ var templateUrl = _navService.getMain().selectedStyle.TemplateUrl;
     directives: [MyProgress]
 })
 
-export class mainContent{}
+export class mainContent{
+    public percentage: number;
+    public current_class: string;
+    public current_percentage: number;
+    public rotation_day: number;
+    public constructor(private _DomService: DomData) {
+        this.percentage = _DomService.getProgress().classData.overall_percentage;
+        this.current_class = _DomService.getProgress().classData.current_class;
+        this.current_percentage = _DomService.getProgress().classData.current_percentage;
+    };
+}

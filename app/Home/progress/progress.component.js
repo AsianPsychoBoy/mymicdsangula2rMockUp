@@ -36,9 +36,9 @@ var MyProgress = (function () {
         this.polarToCartesian = polarToCartesian;
         this.describeArc = describeArc;
         this.click = false;
-        this.percentage = _DomService.getProgress().overall_percentage;
-        this.current_class = _DomService.getProgress().current_class;
-        this.current_percentage = _DomService.getProgress().current_percentage;
+        this.percentage = _DomService.getProgress().classData.overall_percentage;
+        this.current_class = _DomService.getProgress().classData.current_class;
+        this.current_percentage = _DomService.getProgress().classData.current_percentage;
     }
     ;
     //TODO: use [attr] to set stroke-width, delete thinner() then

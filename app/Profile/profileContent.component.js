@@ -9,16 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var mockauth_service_1 = require('../mockauth.service');
+var mockdata_service_1 = require('../mockdata.service');
+var _navService = new mockdata_service_1.DomData();
+var styleUrl = _navService.getProfile().selectedStyle.StyleUrl;
+var templateUrl = _navService.getProfile().selectedStyle.TemplateUrl;
 var profileContent = (function () {
-    function profileContent() {
+    function profileContent(userService) {
+        this.userService = userService;
+        this.user = this.userService.getUser();
     }
+    ;
     profileContent = __decorate([
         core_1.Component({
             selector: 'app-content',
-            templateUrl: '../../templates/profileContent/profileContent.html',
-            styleUrls: ['../../css/profileContent/profileContent.css'],
+            templateUrl: templateUrl,
+            styleUrls: [styleUrl],
+            providers: [mockauth_service_1.AuthService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [mockauth_service_1.AuthService])
     ], profileContent);
     return profileContent;
 }());

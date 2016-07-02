@@ -22,6 +22,7 @@ function describeArc(x: number, y: number, radius: number, startAngle: number, e
         "A", radius, radius, 0, arcSweep, 0, end.x, end.y
     ].join(" ");
     return d;       
+    
 }
 
 var _navService = new DomData();
@@ -40,9 +41,9 @@ var templateUrl = _navService.getProgress().selectedStyle.TemplateUrl;
         public current_class: string;
         public current_percentage: number;
         public constructor(private _DomService: DomData) {
-            this.percentage = _DomService.getProgress().overall_percentage;
-            this.current_class = _DomService.getProgress().current_class;
-            this.current_percentage = _DomService.getProgress().current_percentage;
+            this.percentage = _DomService.getProgress().classData.overall_percentage;
+            this.current_class = _DomService.getProgress().classData.current_class;
+            this.current_percentage = _DomService.getProgress().classData.current_percentage;
         };
         public polarToCartesian=polarToCartesian;
         public describeArc=describeArc;

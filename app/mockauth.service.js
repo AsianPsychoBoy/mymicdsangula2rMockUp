@@ -13,6 +13,14 @@ var AuthService = (function () {
     function AuthService() {
         this.isLoggedIn = false;
     }
+    AuthService.prototype.getUser = function () {
+        return {
+            firstName: "Cack",
+            lastName: "Jai",
+            email: "cjai@micds.org",
+            gradYear: 9,
+        };
+    };
     AuthService.prototype.logIn = function () {
         var _this = this;
         var p = new Promise(function (resolve, reject) {

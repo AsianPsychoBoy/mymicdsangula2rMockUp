@@ -1,88 +1,53 @@
+import {styleList} from './styleSettings'
 import {Injectable} from '@angular/core';
 
-interface styleItem  {
+type styleItem = {
     StyleUrl: string, TemplateUrl: string, Selected: boolean
 } 
 
-interface styleList {
+type styleList = {
     [key: string]: styleItem
 } 
 
-interface bgStyleListItem {
+type bgStyleListItem = {
     StyleUrl: string, HTMLUrl: string, Selected: boolean, JSUrl: string, LibUrl: string
 }
 
-interface bgStyleList {
+type bgStyleList = {
     [key: string]: bgStyleListItem
 } 
 
 @Injectable()
 export class DomData {
+    public getStyleName() {
+        return 'default'
+    }
+
     public getNav() {
-        var styleList: styleList = {
-            Waves: {
-                StyleUrl: '../css/navbar/Waves.css',
-                TemplateUrl: '../templates/navbar/waves.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/navbar/default.css',
-                TemplateUrl: '../templates/navbar/default.html',
-                Selected: true
-            }
-        }
-        for (let style in styleList) {
-                if (styleList[style].Selected) {
-                    var selectedStyle: styleItem = styleList[style]
-                } 
-            }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleList[styleName].navbar;
         return {
             navTitles: ["Home", "Lunch", "Planner", "Settings", "Profile"], //this is supposed to get data from somewhere
             selectedStyle
         }
     }
     public getPlanner() {
-        var styleList:styleList = {
-            Waves: {
-                StyleUrl: '../css/plannerContent/Waves.css',
-                TemplateUrl: '../templates/plannerContent/waves.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/plannerContent/default.css',
-                TemplateUrl: '../templates/plannerContent/default.html',
-                Selected: true
-            }
-        }
-        for (let style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle: styleItem = styleList[style]
-            } 
-        }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleList[styleName].planner;
 
-         return {selectedStyle}
+        return {selectedStyle,
+            
+
+        }
     }
 
     public getweather() {}
     public getProgress() {
-        var styleList:styleList = {
-            Waves: {
-                StyleUrl: '../css/mainContent/progress/Waves.progress.css',
-                TemplateUrl: '../templates/mainContent/progress/waves.progress.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/mainContent/progress/default.progress.css',
-                TemplateUrl: '../templates/mainContent/progress/default.progress.html',
-                Selected: true
-            }
-        }
-        for (let style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle: styleItem = styleList[style]
-            } 
-        }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleList[styleName].progress;
+
         var classData = {
+            day: 1,
             A: "Math",
             A_percentage: 100,
             B: "English",
@@ -100,56 +65,20 @@ export class DomData {
             overall_percentage:75,
             current_class: "E",
             current_percentage: 70,
-            selectedStyle
         }
-        return classData
+        return {classData, selectedStyle}
     }    
     //Background services
     public getBg() {
-        var bgList: bgStyleList = {//Mock Data
-            default: {
-                Selected: true,
-                JSUrl: '../Backgrounds/default/default.js',
-                HTMLUrl: '../Backgrounds/default/default.html',
-                StyleUrl: '../Backgrounds/default/default.css',
-                LibUrl: ''
-            },
-            Waves: {
-                Selected: false,
-                JSUrl: '../Backgrounds/Waves/Waves.js',
-                HTMLUrl: '../Backgrounds/Waves/Waves.html',
-                StyleUrl: '../Backgrounds/Waves/Waves.css',
-                LibUrl: ''
-            }
-        }
-            var selectedBg;
-            Object.getOwnPropertyNames(bgList).forEach(function(val, idx, array) {
-                if (bgList[val].Selected) {
-                    selectedBg = bgList[val];
-                }
-            })   
+        var bgName = this.getStyleName();
+        var selectedBg = styleList[bgName].background;
             return selectedBg
     }
 
     public getLunch(date:{year: number, month: number, day: number}) {
         //Five categories: Main Dish, Action station, Soup, Salad Bar and Dessert.
-        var styleList:styleList = {
-            Waves: {
-                StyleUrl: '../css/lunchContent/Waves.css',
-                TemplateUrl: '../templates/lunchContent/waves.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/lunchContent/default.css',
-                TemplateUrl: '../templates/lunchContent/default.html',
-                Selected: true
-            }
-        }
-        for (let style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle: styleItem = styleList[style]
-            } 
-        }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleList[styleName].lunch;
         return {
             selectedStyle,
             date: date,
@@ -169,45 +98,21 @@ export class DomData {
     }
 
     public getMain() {
-        var styleList:styleList = {
-            Waves: {
-                StyleUrl: '../css/mainContent/Waves.css',
-                TemplateUrl: '../templates/mainContent/waves.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/mainContent/default.css',
-                TemplateUrl: '../templates/mainContent/default.html',
-                Selected: true
-            }
-        }
-        for (let style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle: styleItem = styleList[style]
-            } 
-        }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleList[styleName].main;
 
          return {selectedStyle}
     }
 
     public getAccount() {
-        var styleList:styleList = {
-            Waves: {
-                StyleUrl: '../css/accountContent/Waves.css',
-                TemplateUrl: '../templates/accountContent/waves.html',
-                Selected: false
-            },
-            default: {
-                StyleUrl: '../css/accountContent/default.css',
-                TemplateUrl: '../templates/accountContent/default.html',
-                Selected: true
-            }
-        }
-        for (let style in styleList) {
-            if (styleList[style].Selected) {
-                var selectedStyle: styleItem = styleList[style]
-            }
-        }
+        var styleName = this.getStyleName();
+        var selectedStyle = styleList[styleName].account;
+        return {selectedStyle}
+    }
+
+    public getProfile() {
+        var styleName = this.getStyleName();
+        var selectedStyle = styleList[styleName].profile;
         return {selectedStyle}
     }
 }

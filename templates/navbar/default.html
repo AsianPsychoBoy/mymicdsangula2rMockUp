@@ -1,6 +1,6 @@
 <div class="fluid-container">
     <my-bg></my-bg>
-    <nav class="navbar navbar-light bg-faded">
+    <nav class="navbar navbar-fixed-top navbar-light bg-faded">
         <div class="nav navbar-nav">
             <a *ngFor="let page of pages; let i = index" [ngClass]="{active: isActive[i], 'nav-item': true, 'nav-link': true}"  (click)="onSelect(i)">{{page}}</a>
             <button *ngIf="!authService.isLoggedIn" id="loginButton" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">login</button>
