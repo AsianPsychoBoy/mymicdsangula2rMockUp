@@ -1,6 +1,22 @@
 import {styleList} from './styleSettings'
 import {Injectable} from '@angular/core';
 
+type styleItem = {
+    StyleUrl: string, TemplateUrl: string, Selected: boolean
+} 
+
+type styleList = {
+    [key: string]: styleItem
+} 
+
+type bgStyleListItem = {
+    StyleUrl: string, HTMLUrl: string, Selected: boolean, JSUrl: string, LibUrl: string
+}
+
+type bgStyleList = {
+    [key: string]: bgStyleListItem
+} 
+
 @Injectable()
 export class DomData {
     public getStyleName() {
@@ -32,15 +48,23 @@ export class DomData {
 
         var classData = {
             day: 1,
-            schedule: {
-                A: "Math",
-                B: "English",
-                C: "Science",
-                D: "History",
-                E: "World Language",
-                F: "Choir",
-                G: "Free"
-            }
+            A: "Math",
+            A_percentage: 100,
+            B: "English",
+            B_percentage: 100,
+            C: "Science",
+            C_percentage: 100,
+            D: "History",
+            D_percentage: 100,
+            E: "World Language",
+            E_percentage: 70,
+            F: "Choir",
+            F_percentage: 0,
+            G: "Free",
+            G_percentage: 0,
+            overall_percentage:75,
+            current_class: "E",
+            current_percentage: 70,
         }
         return {classData, selectedStyle}
     }    
@@ -77,8 +101,7 @@ export class DomData {
         var styleName = this.getStyleName();
         var selectedStyle = styleList[styleName].main;
 
-
-        return {selectedStyle}
+         return {selectedStyle}
     }
 
     public getAccount() {

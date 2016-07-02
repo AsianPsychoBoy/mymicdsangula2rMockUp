@@ -36,15 +36,23 @@ var DomData = (function () {
         var selectedStyle = styleSettings_1.styleList[styleName].progress;
         var classData = {
             day: 1,
-            schedule: {
-                A: "Math",
-                B: "English",
-                C: "Science",
-                D: "History",
-                E: "World Language",
-                F: "Choir",
-                G: "Free"
-            }
+            A: "Math",
+            A_percentage: 100,
+            B: "English",
+            B_percentage: 100,
+            C: "Science",
+            C_percentage: 100,
+            D: "History",
+            D_percentage: 100,
+            E: "World Language",
+            E_percentage: 70,
+            F: "Choir",
+            F_percentage: 0,
+            G: "Free",
+            G_percentage: 0,
+            overall_percentage: 75,
+            current_class: "E",
+            current_percentage: 70,
         };
         return { classData: classData, selectedStyle: selectedStyle };
     };

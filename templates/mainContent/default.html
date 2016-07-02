@@ -1,51 +1,11 @@
 <div id="my-fadeout">
     <div class="main-page">
-        <div class="row">
-            <div id="my-date" class="col-lg-6">
-                <div class="card card-block">
-                    <h3 class="card-title">{{date.dateString}}</h3>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-            </div>
-            <div id="my-rotation" class="col-lg-6">
-                <div class="card card-block">
-                    <h3 class="card-title">Day {{rotation_day}}</h3>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-            </div>
+        <div id="my-progressbar">
+            <progress class="progress" [value]="percentage" max="100">{{percentage}}</progress>
+            <h2>Your day is {{percentage}}% complete.</h2>
         </div>
-        <div class="row">
-            <div class="alert alert-info" role="alert" [hidden]="school_avaliable">
-                <strong>School is not in session!</strong>
-            </div>
-            <div id="my-progressbar">
-                <progress class="progress" [value]="percentage" max="100">{{percentage}}</progress>
-                <h2 [hidden]="!school_avaliable">Your day is {{percentage}}% complete.</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div id="my-schedule" class="col-md-6">
-                <div class="card-header">
-                    Current Class: 
-                </div>
-                <div class="card card-block schedule-container">
-                    <h3 class="card-title round-letter">{{current_class.class}}</h3>
-                    <p class="card-text">Mr. McSmartypants</p>
-                </div>
-            </div>
-            <div id="my-reminder" class="col-md-6">
-                <div class="card-header">
-                    Up Next:  
-                </div>
-                <div class="card card-block">
-                    <h3 class="card-title">Lunch</h3>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="card card-block">
-                    <h3 class="card-title ">some Homework</h3>
-                    <p class="card-text">Homework for Mr. McSmartypants</p>
-                </div>
-            </div>
+        <div id="my-dayinfo">
+            <h3>Day {{rotation_day}}</h3>
         </div>
     </div>
 
