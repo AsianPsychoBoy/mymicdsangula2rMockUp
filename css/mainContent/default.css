@@ -13,6 +13,7 @@ progress {
 .main-page {
     width: 100%;
     height: 100vh;
+    padding: 5%;
     padding-top: 100px;
 }
 
@@ -20,4 +21,26 @@ progress {
     width: 100%;
     height: 100vh;
     background-color: #0074d9;
+}
+
+#my-schedule, #my-progressbar {
+    text-align: center;
+}
+
+.round-letter {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    border: 3px solid #0074d9;
+    border-radius: 50%;
+    font-size: 5em;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.schedule-container {
+    text-align: center;
 }
