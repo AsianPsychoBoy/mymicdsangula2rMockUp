@@ -31,6 +31,11 @@ var AppComponent = (function () {
         this.pages = this._DomService.getNav().navTitles;
         //emit events to alert the other components to render the app
         this.selectedPage = 'Home';
+        this.loginModel = {
+            email: '',
+            password: '',
+        };
+        this.formActive = true;
     }
     AppComponent.prototype.restore = function (x) {
         for (var i = 0; i < this.isActive.length; i++) {
@@ -80,6 +85,7 @@ var AppComponent = (function () {
             });
         }
     };
+    //form related variables and methods
     AppComponent.prototype.onClickLogin = function () {
         var _this = this;
         var p = new Promise(function (resolve, reject) {

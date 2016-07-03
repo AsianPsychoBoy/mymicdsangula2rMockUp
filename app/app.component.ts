@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 import {NgFor} from '@angular/common';
 import {Router} from '@angular/router'
 import {AuthService} from './mockauth.service'
+import {NgForm} from '@angular/common'
 
 var _navService = new DomData();
 var styleUrl = _navService.getNav().selectedStyle.StyleUrl;
@@ -86,6 +87,7 @@ export class AppComponent {
         }
     }
 
+    //form related variables and methods
     public onClickLogin() {
         const p: Promise<string> = new Promise (
             (resolve: (str: string)=>void, reject: (str: string)=>void) => {
@@ -120,4 +122,11 @@ export class AppComponent {
     public onClickAccount() {
         this.router.navigate(['/Account'])
     }
+
+    public loginModel = {
+        email: '',
+        password: '',
+    }
+
+    public formActive:boolean = true;
 }

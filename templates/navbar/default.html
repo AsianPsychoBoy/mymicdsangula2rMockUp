@@ -19,12 +19,31 @@
                 <h4 class="modal-title" id="myModalLabel">LOGIN</h4>
             </div>
             <div class="modal-body">
-                ...<!--Login forms-->
+                <form *ngIf="formActive" (ngSubmit)="onSubmit()" #loginForm="ngForm" id="login-form">
+                    <fieldset class="form-group">
+                        <label for="loginEmail">Email address</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" required
+                        [(ngModel)]="loginModel.email"
+                            name="email"  #email="ngModel" >
+                        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                        Email is required
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter password" required
+                        [(ngModel)]="loginModel.password"
+                            name="password"  #password="ngModel" >
+                        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                        Password is required
+                        </div>
+                    </fieldset>
+                    <button type="submit" form="login-form" [disabled]="!loginForm.form.valid" class="btn btn-primary" (click)="onClickLogin()">Login</button>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onClickAccount()">Creat an account</button>
-                <button type="button" class="btn btn-primary" (click)="onClickLogin()" >Login</button>
             </div>
             </div>
         </div>
